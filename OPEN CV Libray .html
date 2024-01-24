@@ -1,0 +1,1099 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>OPEN CV Libray :</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="e5a78930-47ac-4f09-af1b-075de24e74f6" class="page serif"><header><h1 class="page-title">OPEN CV Libray :</h1><p class="page-description"></p></header><div class="page-body"><blockquote id="005005f5-eabc-42b3-aae8-64cfbadfb730" class="">Welcome to my resume made by my a Student in Industrial and Automatic Computing engineering and a Computer Vision Enthusiast   - Embark on a Journey into Computer Vision! In this extensive course, you&#x27;ll delve into the intricacies of computer vision using the robust Python OpenCV library.<p id="42d6a031-aac1-4167-931d-d2564b177639" class="">Whether you&#x27;re a novice or a seasoned programmer, this course will guide you through the essential principles and methodologies of computer vision, covering topics such as image processing, feature detection, object recognition, and more. Gain practical experience by working on real-world examples and projects, complemented by coding exercises to reinforce your newfound skills.</p><p id="ea20c6c3-9b79-4d07-9ceb-3fb7f4c29149" class="">Throughout the course, you&#x27;ll harness the power of Python and OpenCV to craft sophisticated computer vision applications. From mastering face detection and object tracking to unraveling the complexities of image segmentation, you&#x27;ll acquire hands-on expertise. Additionally, learn optimization techniques for enhancing code performance and explore integration with other popular tools and libraries.</p><p id="382481c7-2fc6-4394-8cf7-99054e412426" class="">If you&#x27;re eager to elevate your Python programming proficiency and venture into the realm of computer vision, this course is tailored for you! Join  me , and let&#x27;s embark on this exciting learning journey together.</p></blockquote><p id="df21cf49-6ef4-4d9c-97ff-c3fac8c3ffdd" class="">        <span style="border-bottom:0.05em solid"><strong><mark class="highlight-red"> Course Highlights : </mark></strong></span></p><ul id="8a09800c-25f8-4499-84f1-ca96b0a372f0" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal"><strong>Integrated Development Environment (IDE)</strong></mark> :PYCHARM</li></ul><ul id="32fb708c-1318-43c0-b659-2f44b90d7302" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal"><strong>Libraries used</strong></mark>:CV2,NUMPY,MATPLOTLIB </li></ul><ul id="e569be35-2946-4dca-aedf-cb3108356b1c" class="bulleted-list"><li style="list-style-type:disc"><strong><mark class="highlight-teal">Tasks covered:</mark></strong></li></ul><p id="ca9ea4d9-31a1-4ea2-ace7-3eced54e2669" class=""><strong><code>1 - Introduction to OpenCV<br/>2 - How to Install OpenCV for Python on Windows 10<br/>3 - How to Read, Write, Show Images in OpenCV<br/>4 - How to Read, Write, Show Videos from Camera in OpenCV<br/>5 - Draw geometric shapes on images using Python OpenCV<br/>6 - Setting Camera Parameters in OpenCV Python<br/>7 - Show Date and Time on Videos using OpenCV Python<br/>8 - Handle Mouse Events in OpenCV<br/>9 - More Mouse Event Examples in OpenCV Python<br/>10 - cv.split, cv.merge, cv.resize, cv.add, cv.addWeighted, ROI<br/>11- Bitwise Operations (bitwise AND, OR, NOT and XOR)<br/>12 - How to Bind Trackbar To OpenCV Windows<br/>13 - Object Detection and Object Tracking Using HSV Color Space<br/>14 - Simple Image Thresholding<br/>15 - Adaptive Thresholding<br/>16 - matplotlib with OpenCV<br/>17 - Morphological Transformations<br/>18 - Smoothing Images | Blurring Images OpenCV<br/>19 - Image Gradients and Edge Detection<br/>20 - Canny Edge Detection in OpenCV<br/>21 - Image Pyramids with Python and OpenCV<br/>22 - Image Blending using Pyramids in OpenCV<br/>22 - Image Blending using Pyramids in OpenCV<br/>23 - Find and Draw Contours with OpenCV in Python<br/>24 - Motion Detection and Tracking Using Opencv Contours<br/>25 - Detect Simple Geometric Shapes using OpenCV in Python<br/>26 - Understanding image Histograms using OpenCV Python<br/>27 - Template matching using OpenCV in Python<br/>28 - Hough Line Transform Theory<br/>29 - Hough Line Transform using HoughLines method in OpenCV<br/>30 - Probabilistic Hough Transform using HoughLinesP in OpenCV<br/>31 - Road Lane Line Detection with OpenCV (Part 1)<br/>32 - Road Lane Line Detection with OpenCV (Part 2)<br/>33 - Road Lane Line Detection with OpenCV (Part 3)<br/>34 - Circle Detection using OpenCV Hough Circle Transform<br/>35 - Face Detection using Haar Cascade Classifiers<br/>36 - Eye Detection Haar Feature based Cascade Classifiers<br/>37 - Detect Corners with Harris Corner Detector in OpenCV<br/>38 - Detect Corners with Shi Tomasi Corner Detector in OpenCV<br/>39 - How to Use Background Subtraction Methods in OpenCV<br/>40 - Mean Shift Object Tracking<br/>41 - Object Tracking Camshift Method<br/></code></strong></p><p id="4660955c-712f-487b-a11a-1ae73cd66858" class="">     </p><h1 id="57b0d191-cebd-4b2e-8146-8d2b8ad4a851" class=""><strong>   </strong><strong><mark class="highlight-teal">Digital Image:</mark></strong></h1><p id="03e6807f-a386-4793-86d7-b7fea470cc63" class="">  <strong>An image may be defined as a two-dimensional function f( x ,y)  where x and<br/>  y are spatial (plane) coordinates, and the amplitude of f at any pair of coordinates (x, y) is called the<br/></strong><mark class="highlight-orange"><strong> intensity or gray  level</strong></mark><strong> of the image at that point. When<br/>x, y, and the intensity values of f are all finite, discrete quantities, we call the<br/>image a digital image. Note that a digital image is composed of a finite number of elements, each of which has a particular location<br/>and value. These elements are called picture elements, image elements, pels, and<br/><br/></strong><strong><mark class="highlight-orange">pixels</mark></strong><strong>. Pixel is the term used most widely to denote the elements of a digital<br/>image <br/></strong><div class="indented"><h1 id="596457ae-b410-4893-88e5-ab3e1ea2abf2" class=""><strong><mark class="highlight-teal">Image Data Type: </mark></strong></h1><p id="da2e1c72-2c3b-4aa7-94cc-ae5fcca8abec" class=""><mark class="highlight-purple"><strong>Binary Images</strong></mark><strong>:  2-D arrays that assign one numerical value from the set 0 or 1  to each pixel in the image.  </strong></p><p id="62efbd7c-e7d8-48ee-963d-af19fb4b7113" class=""><mark class="highlight-purple"><strong>Intensity or grey-scale images</strong></mark><strong> are 2-D arrays that assign one numerical value to each pixel which is representative of the intensity at this point. As discussed previously, the pixel value range is bounded by the bit resolution of the image and such images are stored as N-bit integer images with a given format.The value is typically on a scale from 0 (black) to 255 (white), with shades of gray in between</strong></p><p id="38011cde-8f9f-40c0-a999-8d0b851967a3" class=""><strong><mark class="highlight-purple">Colored Image</mark></strong><strong><mark class="highlight-default">:3D array,each pixel is represented by a triplet of values (R, G, B).</mark></strong></p></div></p><p id="b7e22a5a-4155-412f-b95d-ecf152299b0c" class="">
+</p><h1 id="15d41985-3ac2-4572-844a-a5ec6706d981" class=""><strong><mark class="highlight-teal"><em>Image Enhancement:</em></mark></strong></h1><p id="4dd04b7e-cbfb-4715-9f7d-48b18014d6d3" class=""><strong>  This technique involves improving the visual quality of an image to make it more presentable and easier to interpret. It includes operations like contrast adjustment, noise reduction, and sharpening.</strong></p><h1 id="406225ec-cf17-43ce-87ce-598cbe2b1a33" class=""><strong><mark class="highlight-teal"> Image Filtering:</mark></strong></h1><p id="5c2987c5-9793-4eff-85de-aa0021a3bbc3" class=""><strong> Filtering is a crucial technique for </strong><span style="border-bottom:0.05em solid"><strong>removing unwanted noise</strong></span><strong> and enhancing specific features in an image. Various filters, such as Gaussian blur, median filter, and edge detection filters, are employed for different purposes </strong></p><h1 id="fe83eda3-4a84-48a0-bba8-493e138735b4" class=""><strong><mark class="highlight-teal">Feature Extraction:</mark></strong></h1><p id="1aa5db0e-b4aa-46e2-9ea7-997acfc37307" class=""><strong> Feature extraction involves identifying and quantifying relevant characteristics or patterns within an image. These features, such as edges, corners, or texture patterns, serve as the foundation for image recognition and classification tasks.</strong></p><h3 id="c5a9e816-7725-47b9-aa67-77c9f81cf84b" class=""><mark class="highlight-red"><strong>Pixel (Picture Element)</strong></mark><strong>: A pixel is the smallest unit in a digital image. It is a single point in the image and can represent a specific color or shade.</strong></h3><h3 id="d2bdc880-9b2a-4a41-967a-f551a3beb980" class=""><mark class="highlight-red"><strong>Grid</strong></mark><strong>: The grid is a layout or structure that organizes these pixels in rows and columns. Each intersection of a row and column in the grid corresponds to a specific pixel in the image.</strong></h3><p id="032b30b2-5f5e-4742-ae43-e162de4c180a" class=""><strong>—An image with a resolution of 1920x1080 means it has 1920 pixels in width and 1080 pixels in height, arranged in a grid. The total number of pixels in the image is the product of these two dimensions (1920 * 1080 = 2,073,600 pixels).</strong></p><ul id="5741b7b6-a1f4-498e-aec4-af8a31e3e759" class="bulleted-list"><li style="list-style-type:disc"><strong><code><mark class="highlight-red">OPEN CV</mark></code></strong><strong><mark class="highlight-red">:</mark></strong><strong>image processing library created by intel.</strong></li></ul><ul id="4efac664-3881-4286-86d4-bb720e95864d" class="bulleted-list"><li style="list-style-type:disc"><strong>Digital image  are typically stored into matrix.</strong></li></ul><ul id="3b285de3-5c38-4625-85c5-f380ed0b59a7" class="bulleted-list"><li style="list-style-type:disc"><strong><code>NUMPY:</code></strong><strong> a highly optimized library for numerical operations.</strong></li></ul><ul id="9fc20d72-38c0-428e-b54b-6f3450c16d5f" class="bulleted-list"><li style="list-style-type:disc"><strong>Digital images are 2D arrays of pixels </strong></li></ul><ul id="02d965f0-c67a-4701-8c10-1fcb8caa5b3d" class="bulleted-list"><li style="list-style-type:disc"><strong>All the OpenCV array structures are converted to and_from Numpy arrays.</strong></li></ul><figure id="2a8090ed-7619-4408-b317-3eea4494fdbf" class="link-to-page"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Invite%20de%20Commande%20Windows%202a8090ed76194408b3173eea4494fdbf.html">Invite de Commande Windows:</a></figure><h1 id="cf5ed962-98f2-4345-8175-6318efc32975" class=""><strong><mark class="highlight-teal"> How to Read, Write, Show Images in OpenCV:</mark></strong></h1><p id="2afe03e1-4ba6-4339-bf65-4f366ecbcb47" class="">-1. Accessing video sources: The primary purpose of <code>video.capture()</code> is to establish a connection to a video source, such as a<span style="border-bottom:0.05em solid"> webcam, IP camera</span>, or a file containing a video. It provides a means to access the frames from these sources for further use in your program.</p><p id="b9e7b1d0-4631-487e-b1d3-e53d479bf6ba" class="">-Retrieving frames: Once the connection to the video source is established, <code>video.capture()</code> enables you to retrieve individual frames from the video stream. These frames are essentially snapshots of the video at a specific point in time and can be utilized for various purposes</p><p id="286a69a9-b760-4f24-b802-0c7099194aa0" class="">      cap=cv2.videocapture()</p><p id="1b5fcd62-5ef7-4854-abc9-a7888a7e20e2" class="">-To save the video<code>:VideoWriter</code></p><p id="750626f7-cdff-4138-bc99-9cd3b2fabbe1" class="">         video_writer=cv2.VideoWriter(output_file,fourcc,fp,frame_size)</p><p id="8473b36b-5d24-4286-ab29-16c8725811a3" class="">-5 - Draw geometric shapes on images using Python OpenCV </p><p id="c54baa25-f67c-43ad-a647-5e807fefe195" class="">img=cv2.line(<strong>img</strong>, pt1: Point, pt2: Point, color: Scalar, thickness: int )</p><p id="81ec29ad-150d-4986-a531-8f3197afaf73" class="">img=cv2.arrowedline(<strong>img</strong>, pt1: Point, pt2: Point, color: Scalar, thickness: int) img=cv2.rectangle(<strong>img</strong>, pt1: Point, pt2: Point, color: Scalar, thickness: int )<br/>img=cv2.circle(<br/><strong>img</strong>, center: Point, radius: int, color: Scalar, thickness: int)</p><p id="383798e1-caf5-45de-b1f2-15a66d3b2482" class="">img=cv2.puttext(<strong>img</strong>, text: str, origine: Point, fontFace: int, fontScale(fontsize): float, color: Scalar, thickness: int</p><p id="60962359-67c1-4f30-9654-ce2305e19ebc" class="">-https://github.com/ShawnHymel/computer-vision-with-embedded-machine-learning</p><ul id="9dd20dfc-e06d-425c-9592-13a94397ec30" class="bulleted-list"><li style="list-style-type:disc"><code>cap.set()</code>:the video capture object will modify its properties according to the provided parameter,<code>cv2.CAP_PROP_FRAME_WIDTH</code> is the identifier for the frame width property, and <code>cv2.CAP_PROP_FRAME_HEIGHT</code> is the identifier for the frame height property.</li></ul><ul id="649a609f-0cc8-45a4-b2e9-0d3a6cdbea96" class="bulleted-list"><li style="list-style-type:disc"> - Setting Camera Parameters in OpenCV Python</li></ul><ul id="949d2049-f061-4978-8dd8-cfcb0d6160fa" class="bulleted-list"><li style="list-style-type:disc"> - Show Date and Time on Videos using OpenCV Python</li></ul><p id="0192e5e3-7d5a-48ef-8b51-55fe92c78ed5" class="">                      import <code>datetime</code></p><p id="4de2042e-f252-4f6e-af63-89c3ded75e50" class="">                    dataset=str(<code>datetime.datetime.now()</code>)</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="381d9702-dd87-4ab9-b54b-b2a8215bf2de" class="code"><code class="language-undefined">import cv2
+
+cap = cv2.VideoCapture(0)
+output_file = &#x27;output.mp4&#x27;
+fourcc = cv2.VideoWriter_fourcc(*&#x27;XVID&#x27;)
+fps = 20
+cap.set(3,1000)
+cap.set(4,480)
+frame_width = int(cap.get(3))
+frame_height = int(cap.get(4))
+frame_size = (frame_width, frame_height)
+video_writer = cv2.VideoWriter(output_file, fourcc, fps, frame_size)
+
+while cap.isOpened():
+    ret, frame = cap.read()
+    if ret:
+        print(cap.get(3))
+        print(cap.get(4))
+     
+        video_writer.write(frame)
+        cv2.imshow(&#x27;video&#x27;, frame)
+
+        if cv2.waitKey(1) == ord(&#x27;q&#x27;):
+            break
+    else:
+        break
+
+cap.release()
+cv2.destroyAllWindows()</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="40c5870c-d7a5-487b-a8de-8e57a75308bf" class="code"><code class="language-Python">-By default, if you do not manually set the frame size, it usually depends on the default settings of the capture device. In this case, if the capture device is a webcam, it may have a default frame size of 640x480 pixels</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="fecf117e-5029-412e-b230-82846120966b" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">In video capture, there are several properties that can be set to control the video resolution, frame rate, etc. These properties are identified by numeric codes</code></pre><p id="3c2d9990-b211-425a-8577-94d9f3e5cb7d" class="">-<code> Cap.set(3,x)</code>:<code>3</code> refers to the width property<br/>- <br/><code>Cap.set(4,y)</code>:<code>4</code> refers to the height property</p><p id="4ada1463-a658-47d6-928f-c9c4cf0f0a28" class=""><code>-Cap.get(3)</code>:returns the width</p><p id="1911c4c4-bee4-4535-a684-fa62184cc021" class=""><code>-Cap.get(4)</code>:return the height </p><p id="eb5abc86-1458-4f01-af42-333239b0b29f" class="">-<code>dir(cv2)</code>: List all the classes,instances in cv2</p><ul id="6cf90ece-bc20-4900-aae8-31e1fb078a36" class="bulleted-list"><li style="list-style-type:disc"> Draw geometric shapes on images using Python OpenCV</li></ul><p id="887fb332-8203-49d7-b533-4e75794ed955" class="">-The function <code>str()</code> in programming is used to convert a value into a string data type.</p><h1 id="a46bc338-2208-440f-bfea-c3d1936702ee" class=""> <mark class="highlight-teal">Handle Mouse Events in OpenCV</mark></h1><hr id="8448bf25-ea89-47d0-ba5d-31e3fb315331"/><p id="5845dde9-314a-4278-943f-a7cb1ad55fe4" class="">— Various constants or flags related to mouse events in programming. Let&#x27;s break it down and explain each one:</p><ol type="1" id="2660c047-a984-47e7-95f6-3ee1a2089557" class="numbered-list" start="1"><li><strong>EVENT_FLAG_ALTKEY</strong>: This flag indicates that the Alt key was pressed during a mouse event.</li></ol><ol type="1" id="0cc9a5be-320b-4392-befa-d93a3eccd8da" class="numbered-list" start="2"><li><strong>EVENT_FLAG_CTRLKEY:</strong> This flag indicates that the Ctrl key was pressed during a mouse event.</li></ol><ol type="1" id="7793a2ac-9b07-45ef-9537-776afc411d45" class="numbered-list" start="3"><li><strong>EVENT_FLAG_LBUTTON</strong>: This flag indicates that the left mouse button was pressed during a mouse event.</li></ol><ol type="1" id="2397da31-9d5b-4d7e-9750-8e709ec3dde9" class="numbered-list" start="4"><li><strong><em>EVENT_FLAG_MBUTTON</em></strong>: This flag indicates that the middle mouse button was pressed during a mouse event.</li></ol><ol type="1" id="ae999b59-ffe3-4228-9530-3e6af8da2172" class="numbered-list" start="5"><li><strong>EVENT_FLAG_RBUTTON</strong>: This flag indicates that the right mouse button was pressed during a mouse event.</li></ol><ol type="1" id="bba606d2-7fb7-4707-ac91-6d22968fda53" class="numbered-list" start="6"><li><strong>EVENT_FLAG_SHIFTKEY</strong>: This flag indicates that the Shift key was pressed during a mouse event.</li></ol><ol type="1" id="633d2b3d-e2aa-4905-974f-5646d2c412b9" class="numbered-list" start="7"><li><strong>EVENT_LBUTTONDBLCLK</strong>: This constant represents a double-click event of the left mouse button.</li></ol><ol type="1" id="55fdba46-2245-48bf-80fc-24a373c3431e" class="numbered-list" start="8"><li><strong>EVENT_LBUTTONDOWN:</strong> This constant represents the pressing down event of the left mouse button.</li></ol><ol type="1" id="314f5fc5-e728-44f2-bde2-69a70bcb23f5" class="numbered-list" start="9"><li>EVENT_LBUTTONUP: This constant represents the releasing event of the left mouse button.</li></ol><ol type="1" id="13ac0b78-ee02-462a-b64f-ea07936b9473" class="numbered-list" start="10"><li>EVENT_MBUTTONDBLCLK: This constant represents a double-click event of the middle mouse button.</li></ol><ol type="1" id="ca704321-2db3-4425-9afa-6736758e6d5a" class="numbered-list" start="11"><li>EVENT_MBUTTONDOWN: This constant represents the pressing down event of the middle mouse button.</li></ol><ol type="1" id="6d5a0e0c-0369-473c-b5de-620c25f83de4" class="numbered-list" start="12"><li>EVENT_MBUTTONUP: This constant represents the releasing event of the middle mouse button.</li></ol><ol type="1" id="275eb62a-0a5f-4eef-8f8a-e957aa5f5e11" class="numbered-list" start="13"><li>EVENT_MOUSEHWHEEL: This constant represents a horizontal mouse wheel event.</li></ol><ol type="1" id="4c50f510-100f-4f17-a6f0-7a41d082d1ab" class="numbered-list" start="14"><li>EVENT_MOUSEMOVE: This constant represents the movement of the mouse.</li></ol><ol type="1" id="32e936e3-63cb-4af0-b5d3-12cb8c90dc75" class="numbered-list" start="15"><li>EVENT_MOUSEWHEEL: This constant represents a vertical mouse wheel event.</li></ol><ol type="1" id="9e7c1c3b-b95b-43fd-9bec-53826c05468c" class="numbered-list" start="16"><li>EVENT_RBUTTONDBLCLK: This constant represents a double-click event of the right mouse button.</li></ol><ol type="1" id="c4c8210f-e0b3-4948-9291-c7ce78e9a087" class="numbered-list" start="17"><li>EVENT_RBUTTONDOWN: This constant represents the pressing down event of the right mouse button.</li></ol><ol type="1" id="037aa652-3100-4dd0-a23e-01c6df821d30" class="numbered-list" start="18"><li>EVENT_RBUTTONUP: This constant represents the releasing event of the right mouse button.</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="0b4c65d0-66ec-4dd5-ab79-9e3d6f65eeb1" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">import cv2
+import numpy as np
+events=[i for i in dir(cv2) if &#x27;EVENT&#x27; in i]
+print(events)
+
+def click_event(event,x,y,flags,par):
+    if event==cv2.EVENT_RBUTTONUP:
+        print(x, &#x27; , &#x27;, y)
+        font=cv2.FONT_HERSHEY_PLAIN
+        text=str(x)+&#x27;,&#x27;+str(y)
+        cv2.putText(img,text,(x,y),font,1,(255,255,0),2)
+        cv2.imshow(&#x27;image&#x27;,img)
+
+img=np.zeros((400,500,3),np.uint8)
+cv2.imshow(&#x27;image&#x27;,img)
+cv2.setMouseCallback(&#x27;image&#x27;,click_event)
+cv2.waitKey(0)</code></pre><p id="6f863343-b73a-4939-8d87-d38b31814908" class="">
+</p><figure id="1bc45feb-2501-4c93-87e5-ac0227244dd9" class="image" style="text-align:center"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled.png"><img style="width:336px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled.png"/></a></figure><p id="0c8a0d1c-b4d8-41b5-816e-6dd3c40336b5" class="">    These constants are typically used in programming languages or frameworks that support mouse event handling. By checking these constants in event handling code, developers can identify which mouse button was pressed, released, or double-clicked, and whether any modifier keys (Alt, Ctrl, or Shift) were held during the event.</p><ul id="e61ff5c2-b577-4cb1-b634-9818ba88f171" class="bulleted-list"><li style="list-style-type:disc">img=<strong><code>np.zeros</code></strong>(n,m,3  ),np.uint8)</li></ul><p id="cf0ee4af-6ee7-4b27-b81f-b2d2cc86f64f" class="">⇒Creating an image of size  n.m pixels with 3 channels (RGB) using the NumPy library.</p><ul id="f128e90f-517d-470b-8df8-a4ceb34dcfcf" class="bulleted-list"><li style="list-style-type:disc"><code><strong>img[y, x, 0]</strong></code>: This <strong>retrieves the blue channel intensity at the pixel </strong><code><strong>(x, y)</strong></code>. In OpenCV, the color channels are ordered as Blue, Green, and Red.</li></ul><ul id="e588d9a8-bff5-4d2c-84dc-827dfefaeeac" class="bulleted-list"><li style="list-style-type:disc"><code><strong>img[y, x, 1]</strong></code>: This retrieves the green channel intensity at the pixel <code><strong>(x, y)</strong></code>.</li></ul><ul id="4895ee0d-f8e5-4476-9f51-76981c629adf" class="bulleted-list"><li style="list-style-type:disc"><code><strong>img[y, x, 2]</strong></code>: This retrieves the red channel intensity at the pixel <code><strong>(x, y)</strong></code>.</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c123e259-a230-4370-a740-bb5a7f319805" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">import cv2
+import numpy as np
+events=[i for i in dir(cv2) if &#x27;EVENT&#x27; in i]
+print(events)
+
+def click_event(event,x,y,flags,par):
+    if event==cv2.EVENT_RBUTTONUP:
+        blue=img[y,x,0]
+        green=img[y,x,1]
+        red=img[y,x,2]
+        print(x, &#x27; , &#x27;, y)
+        font=cv2.FONT_HERSHEY_PLAIN
+        text=str(blue)+&#x27;,&#x27;+str(green)+&#x27;,&#x27;+str(red)
+        cv2.putText(img,text,(x,y),font,1,(255,255,0),2)
+        cv2.imshow(&#x27;image&#x27;,img)
+path=r&#x27;C:\Users\T.M.S\OneDrive\Bureau\OPENCV tuto\chela.png&#x27;
+img=cv2.imread(path)
+cv2.imshow(&#x27;image&#x27;,img)
+cv2.setMouseCallback(&#x27;image&#x27;,click_event)
+cv2.waitKey(0)
+
+
+
+</code></pre><figure id="07d13ff5-e59a-4d25-ad88-bc2d537f1240" class="image" style="text-align:center"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%201.png"><img style="width:384px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%201.png"/></a></figure><p id="fb71ec57-1017-49bb-a370-0b56f99f3b71" class="">
+</p><p id="19b901b7-afcb-4d10-b5f4-651b214c1804" class="">
+</p><ul id="7c4c435e-d6cc-4937-a386-bd757fb4ab51" class="bulleted-list"><li style="list-style-type:disc"><code><strong>img.shape</strong></code><strong>:</strong>it returns a tuple <code><strong>(height, width, channels)</strong></code></li></ul><p id="be808a98-f381-44b8-b865-0415785efe30" class="">height=img.shape[0]</p><p id="9baf5498-38f7-464b-a719-680d2396357c" class="">width=img.shape[1]</p><ul id="0cbc8d83-ca9e-4fad-8a33-a8eff8299bde" class="bulleted-list"><li style="list-style-type:disc"><code><strong>img.size</strong></code><strong>: </strong>the total number of elements (pixels) in the imagethe total number of elements (pixels) in the image</li></ul><ul id="98bae60f-34c2-4336-8910-e94734395e6e" class="bulleted-list"><li style="list-style-type:disc">b, g, r = cv2.<code>split</code>(img)</li></ul><ul id="9ba50e5b-d713-47a7-8a39-533c8fb51120" class="bulleted-list"><li style="list-style-type:disc">cv2.imshow(&#x27;Blue Channel&#x27;, b)<br/>cv2.imshow(&#x27;Green Channel&#x27;, g)<br/>cv2.imshow(&#x27;Red Channel&#x27;, r)<br/></li></ul><ul id="1a4af867-3672-43be-b197-a55dbe4de093" class="bulleted-list"><li style="list-style-type:disc"><code>cv2.add</code>: </li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="28469b76-1914-406e-a12f-346eeadd0a93" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">img = cv2.imread(path)
+img1 = cv2.imread(path1)
+img1 = cv2.resize(img1, (img.shape[1], img.shape[0]))
+
+# Adding two images
+new_image = cv2.add(img, img1)
+cv2.imshow(&#x27;added&#x27;, new_image)
+
+</code></pre><ul id="0a99b413-cacc-490e-a93e-9a2af08f8521" class="bulleted-list"><li style="list-style-type:disc"><code><strong>cv2.addWeighted()</strong></code><strong>:</strong></li></ul><p id="54d9e478-3829-48f6-b5a6-50cdb97851cd" class="">image2=cv2.addWeighted(img,90,img1,10,0)</p><p id="92e9505a-20a3-48bb-a98c-40530535288d" class="">                  <code><strong>alpha</strong></code>: Weight of the first image (<code><strong>src1</strong></code>)</p><p id="e48ac605-65b7-48e5-bc13-f7463c05b772" class="">                   <code><strong>beta</strong></code>: Weight of the second image (<code><strong>src2</strong></code><strong>)</strong></p><p id="8259b391-7262-4cc9-b4f0-2ed43ae41e01" class="">-These weights are scalar values that typically range from 0 to 1, where 0 means no contribution from the respective image, and 1 means full contribution. Values between 0 and 1 represent a partial contribution.</p><h3 id="06e9cce0-1b3e-4645-82bc-ee54130a2a7d" class="">Trackbar(curseur):</h3><figure id="25bd52d4-f3c5-4df8-b5ca-dc68a37324c3" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%202.png"><img style="width:246px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%202.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="4deb72e4-680a-498c-bb31-ec7d6559e03f" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">import cv2
+import  numpy as np
+img=np.zeros((300,512,3),np.uint8)
+path = r&#x27;C:\Users\T.M.S\OneDrive\Bureau\OPENCV tuto\capture.png&#x27;
+img1=cv2.imread(path)
+def nothing(x):
+    print(x)
+cv2.namedWindow(&#x27;image&#x27;)
+cv2.createTrackbar(&#x27;B&#x27;,&#x27;image&#x27;,0,255,nothing)
+cv2.createTrackbar(&#x27;G&#x27;,&#x27;image&#x27;,0,255,nothing)
+cv2.createTrackbar(&#x27;R&#x27;,&#x27;image&#x27;,0,255,nothing)
+cv2.imshow(&#x27;image&#x27;,img1)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+</code></pre><figure id="b4f079df-c527-4ed2-8a71-c60f653b1399" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%203.png"><img style="width:432px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%203.png"/></a></figure><p id="788745e8-4312-4c3d-8845-1312989d9452" class="">
+</p><ul id="62213b15-9dbb-4624-a9ad-4a461a1462e5" class="bulleted-list"><li style="list-style-type:disc">b=cv2.<strong><code>getTrackbarPos</code></strong>(&#x27;blue&#x27;,&#x27;imagee&#x27;)</li></ul><p id="fd4a74c8-934d-4e5c-8180-589690ebabd4" class="">:Retrieve the current position (value) of the trackbar named &#x27;blue&#x27; in the window named &#x27;imagee’</p><ul id="fcc5d310-8e28-4884-b957-5123872f6226" class="bulleted-list"><li style="list-style-type:disc"></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="40d1e3fb-7ea2-46c7-bd29-46cb019eeb7a" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">import cv2
+import numpy as np
+from matplotlib   import pyplot as plt
+img = np.zeros((300, 512, 3), np.uint8)
+
+# Uncomment the following lines if you want to use an image
+# path = r&#x27;C:\Users\T.M.S\OneDrive\Bureau\OPENCV tuto\capture.png&#x27;
+# img1 = cv2.imread(path)
+
+def nothing(x):
+    print(x)
+
+# Create a window and trackbars
+cv2.namedWindow(&#x27;image&#x27;)
+
+# Uncomment the following lines if you want to use an image
+# cv2.imshow(&#x27;image&#x27;, img1)
+
+# Create trackbars for B, G, and R channels
+cv2.createTrackbar(&#x27;B&#x27;, &#x27;image&#x27;, 0, 255, nothing)
+cv2.createTrackbar(&#x27;G&#x27;, &#x27;image&#x27;, 0, 255, nothing)
+cv2.createTrackbar(&#x27;R&#x27;, &#x27;image&#x27;, 0, 255, nothing)
+
+while True:
+    cv2.imshow(&#x27;image&#x27;, img)
+
+    # Get the current trackbar positions
+    blue = cv2.getTrackbarPos(&#x27;B&#x27;, &#x27;image&#x27;)
+    green = cv2.getTrackbarPos(&#x27;G&#x27;, &#x27;image&#x27;)
+    red = cv2.getTrackbarPos(&#x27;R&#x27;, &#x27;image&#x27;)
+
+    # Set the image color based on trackbar positions
+    img[:] = [blue, green, red]
+
+    key = cv2.waitKey(1) &amp; 0xFF
+    if key == 27:  # Break the loop when the &#x27;Esc&#x27; key is pressed
+        break
+
+cv2.destroyAllWindows()</code></pre><p id="b3be6d8e-2ed1-4950-8861-3bc4f7a7c961" class="">
+</p><p id="43d83b07-cba9-4414-949d-1bf8a6d09f98" class="">
+</p><figure id="0f2048aa-04ba-4ef7-bb11-96225bc13720" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%204.png"><img style="width:336px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%204.png"/></a></figure><figure id="afaa4cb6-0975-49dd-920a-4292cc8aa980" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%205.png"><img style="width:336px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%205.png"/></a></figure><h2 id="4cd74456-6505-4bc5-ad81-fa6508ee43dd" class=""><mark class="highlight-teal"><em><span style="border-bottom:0.05em solid"><strong>Matplotlib: </strong></span></em></mark></h2><p id="ce7f8ef4-ab41-4e32-a589-d321749d3cf4" class=""><code><strong>Matplotlib</strong></code> is a 2D plotting library for the Python programming language. It allows you to create static, animated, and interactive visualizations in Python. Matplotlib is widely used for creating various types of plots and charts, making it a popular tool for data visualization in scientific computing, data analysis, machine learning, and more.</p><p id="f6eaa100-5a77-46d1-9697-15586932c624" class="">Key features of Matplotlib include:</p><ol type="1" id="e9fa5787-5e79-4606-b0fe-78312ee7d635" class="numbered-list" start="1"><li><strong>Support for Various Plot Types:</strong><ul id="e4ba1146-a418-42f8-af45-9b8ff8a49c16" class="bulleted-list"><li style="list-style-type:disc">Line plots</li></ul><ul id="6dc47ee1-a568-4143-9634-2d6abf39d492" class="bulleted-list"><li style="list-style-type:disc">Scatter plots</li></ul><ul id="cc927ff1-33de-48ba-86bf-681b80d5c319" class="bulleted-list"><li style="list-style-type:disc">Bar plots</li></ul><ul id="eb119239-ef4f-44d7-800f-73c6d8590e4a" class="bulleted-list"><li style="list-style-type:disc">Histograms</li></ul><ul id="3d98e47a-6770-4363-bfdd-c5b8a7cee78e" class="bulleted-list"><li style="list-style-type:disc">Pie charts</li></ul><ul id="6a7481c1-9e2d-4bef-b2cb-2f4bee4a4308" class="bulleted-list"><li style="list-style-type:disc">3D plots, and more.</li></ul></li></ol><p id="1472250c-7011-4fbe-a8d8-b8f9e2bda1f9" class="">-Show an image using matplotlib library:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6491b7c0-db69-483a-9b2e-27d02e6a4a25" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">import cv2
+from matplotlib   import pyplot as plt
+path = r&#x27;C:\Users\T.M.S\OneDrive\Bureau\OPENCV tuto\capture.png&#x27;
+img=cv2.imread(path)
+cv2.imshow(&#x27;imagr&#x27;,img)
+plt.imshow(img)
+plt.show()
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+</code></pre><figure id="6e090da8-3529-4413-9627-54d567d93211" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%206.png"><img style="width:336px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%206.png"/></a></figure><figure id="306cde6c-4f9f-4c28-9a22-9dce26bbec0d" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%207.png"><img style="width:384px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%207.png"/></a></figure><p id="4ce2f9e5-142a-43b6-9cc9-2fc94a0250c4" class="">=⇒When OpenCV reads an image, it interprets the color channels in the order of Blue, Green, and Red (<strong>BGR</strong>),</p><p id="0a023783-ecde-42af-bdba-f3e78f735c6a" class="">=⇒when Matplotlib displays an image, it expects the color channels to be in the order of Red, Green, and Blue (<strong>RGB</strong>).</p><ul id="3803dbef-684a-48d1-9c40-b9ede2bd6ce6" class="bulleted-list"><li style="list-style-type:disc"><code>plt.xticks([]):</code>remove the axis ticks (labels) from the x-axis</li></ul><h2 id="a6df2cb7-6a02-455a-9b37-8fe7b430052e" class=""><mark class="highlight-teal"><strong>Morphological Transformations:</strong></mark></h2><p id="e7169707-89cb-4908-a459-f3c5f438d730" class="">-performed on binary images </p><p id="c3994aeb-5795-4b46-95a0-a740ebd9c226" class="">-A kernel tells us how to change the value of any given  pixel by combining it with different amounts of the neighboring pixels </p><ul id="bfb0f6a6-2918-4d0b-953b-cb963f150ae7" class="bulleted-list"><li style="list-style-type:disc"><strong>Binary Image:</strong></li></ul><ul id="a6e09101-77cf-4be7-91d9-96ba7c49d3f2" class="bulleted-list"><li style="list-style-type:disc">In a binary image, each pixel is restricted to only two possible intensity values: usually 0 (black) or 255 (white). This means that each pixel is either fully off or fully on.</li></ul><ul id="b5877be2-9fd8-475f-aaa1-926bf71d6d74" class="bulleted-list"><li style="list-style-type:disc">Binary images are often used for tasks where only the presence or absence of information matters, such as in image segmentation or object detection.</li></ul><ul id="dcd19250-0a45-474e-b369-66492cbd0c75" class="bulleted-list"><li style="list-style-type:disc">Binary images are commonly obtained through a process called<strong> thresholding</strong>, where a threshold value is chosen, and pixels with intensity values above the threshold are set to white, while those below are set to black</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="4563fab5-67db-4e27-8d39-82bd23c8f56f" class="code"><code class="language-JavaScript">import cv2
+from matplotlib import pyplot as plt
+
+path = r&#x27;C:\Users\T.M.S\OneDrive\Bureau\OPENCV tuto\MONA_LISA.JPG&#x27;
+img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)  # Read the image in grayscale mode
+_, mask = cv2.threshold(img, 120, 255, cv2.THRESH_BINARY)
+
+title = [&#x27;Grayscale Image&#x27;, &#x27;Binary Image&#x27;]
+images = [img, mask]
+
+for i in range(2):
+plt.subplot(1, 2, i + 1)
+plt.imshow(images[i], cmap=&#x27;gray&#x27;)  # Moved cmap=&#x27;gray&#x27; to plt.imshow()
+plt.title(title[i])
+plt.xticks([]), plt.yticks([])  # Hide axis ticks
+
+plt.show()</code></pre><p id="09289abf-d941-4b06-aad5-decb7b882c8f" class="">
+</p><figure id="ad4062f6-87dc-4ca0-a5d0-b467e401c6c7" class="image" style="text-align:left"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%208.png"><img style="width:384px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%208.png"/></a></figure><ul id="56ee7116-6465-466a-9afb-a5bf74ce7df5" class="bulleted-list"><li style="list-style-type:disc"><code>kernel=np.ones((2,2),np.uint8):</code> creating a 2x2 matrix (kernel) filled with ones</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a4fb2f1f-aa56-49e2-9832-015f833071c9" class="code"><code class="language-JavaScript">import cv2
+from matplotlib import pyplot as plt
+import numpy as np
+path = r&#x27;C:\Users\T.M.S\OneDrive\Bureau\OPENCV tuto\MONA_LISA.JPG&#x27;
+img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)  # Read the image in grayscale mode
+_, mask = cv2.threshold(img, 120, 255, cv2.THRESH_BINARY)
+kernel=np.ones((2,2),np.uint8)
+dilatation=cv2.dilate(mask,kernel)
+
+title = [&#x27;Original Image&#x27;, &#x27;Binary Mask&#x27;,&#x27;dilatee&#x27;]
+images = [img, mask,dilatation]
+
+for i in range(3):
+    plt.subplot(1, 3, i + 1)
+    plt.imshow(images[i], cmap=&#x27;gray&#x27;)  # Moved cmap=&#x27;gray&#x27; to plt.imshow()
+    plt.title(title[i])
+    plt.xticks([]), plt.yticks([])  # Hide axis ticks
+
+plt.show()</code></pre><figure id="7c4b9aca-9740-490e-856e-cb1220f5fea8" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%209.png"><img style="width:1578px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%209.png"/></a></figure><p id="ed552062-712e-49bb-965d-46939aa3c137" class="">
+</p><ul id="75001d1c-717b-4822-b03f-af424943bfc8" class="bulleted-list"><li style="list-style-type:disc">kernel = <code>np.ones</code>((3,3), np.uint8)</li></ul><p id="b9616f20-104a-4ac5-bd27-4504fc930bc4" class="">output: [   [1 1 1]<br/>                     [1 1 1]<br/>                      [1 1 1]    ]<br/></p><hr id="910bb9c9-24df-4b40-b5a5-57de721f0949"/><p id="3634bb86-cd98-49b3-a5aa-1584970600e6" class=""><strong>Creating a Structuring Element (</strong><code><strong>kernel</strong></code><strong>):</strong> The <code><strong>np.ones((3,3), np.uint8)</strong></code> creates a 3x3 matrix of ones. This matrix is used as a structuring element, which defines the neighborhood for the dilation operation. In this case, it&#x27;s a simple 3x3 square-shaped structuring element.</p><p id="8d860d00-3be1-43b9-9db3-b4d61034b3d9" class=""><strong>Dilation Operation:</strong> The <code><strong>cv2.dilate</strong></code> function is then applied to the binary thresholded image (<code><strong>mask</strong></code>) using the specified structuring element (<code><strong>kernel</strong></code>). Dilation is a morphological operation that is commonly used to enhance the features of an image. It works by placing the structuring element at each pixel in the image and setting the pixel value to the maximum value within the neighborhood defined by the structuring element. This has the effect of thickening or <strong>expanding bright regions in the image.</strong></p><ul id="2c383827-3f8e-498b-9baa-05662fdbee13" class="bulleted-list"><li style="list-style-type:disc"><code>erosion = cv2.erode(mask, kernel)</code></li></ul><hr id="b8876506-b9ae-4c0f-8fea-846c79ceeda6"/><p id="bc0b8611-c705-45c2-8329-866a1fee4550" class=""><strong>Erosion Operation:</strong> Erosion is another morphological operation that is used to<strong> shrink or erode the boundaries of bright regions in a binary image</strong>. It works by placing the structuring element at each pixel in the image and setting the pixel value to the<strong> minimum</strong> value within the neighborhood defined by the structuring element.</p><figure id="f09f7e42-babc-4206-bfa2-73c98afffdf8" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/test4result.png"><img style="width:528px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/test4result.png"/></a></figure><ul id="4f40a2e9-26b8-4a1f-888e-32a671e4838a" class="bulleted-list"><li style="list-style-type:disc"><code>opening = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)<br/><br/></code><br/>—————————————————————————————————————————————-<br/></li></ul><p id="31e7baaa-73ac-4f94-9f72-b92aa180907f" class=""><strong>Morphological Opening Operation:</strong></p><ul id="1af5f93c-d37b-49ce-b15c-d06959b2f1b9" class="bulleted-list"><li style="list-style-type:disc">Morphological opening is a combination of erosion followed by dilation. It is particularly useful in removing noise and small objects from binary images while preserving the overall structure of larger objects.</li></ul><p id="9fa13caa-025a-40a1-be1a-02b6fb5b58ce" class="">
+</p><ul id="9b67d701-b760-4492-862f-d33bf64028e4" class="bulleted-list"><li style="list-style-type:disc"><code>image1 = cv2.pyrDown(img)</code></li></ul><ol type="1" id="11ae1bbf-c5d1-46ca-87b7-6fe5deaa3a65" class="numbered-list" start="1"><li><strong>Image Pyramids:</strong><ul id="7ad3e87a-a043-4d88-b21e-1f580dc59556" class="bulleted-list"><li style="list-style-type:disc">Image pyramids are multi-scale representations of an image. They are commonly used in computer vision and image processing for tasks such as image blending, feature matching, and scale-invariant feature extraction.</li></ul></li></ol><ol type="1" id="44e23f56-2f5c-46b9-8cca-5f7bfa641fea" class="numbered-list" start="2"><li><strong>cv2.pyrDown:</strong><ul id="b0af601b-4812-43f5-b568-8c41cacc9c0e" class="bulleted-list"><li style="list-style-type:disc"><code><strong>cv2.pyrDown</strong></code> is a function in the OpenCV library that performs downsampling (reducing the image size) by applying a Gaussian smoothing and then discarding every second pixel along each dimension. This process effectively reduces the image dimensions by half.</li></ul></li></ol><ul id="6672bb46-0c5b-4997-9b94-b138dcda3e5e" class="bulleted-list"><li style="list-style-type:disc">In image processing,a kernel,convolution matrix,or mask is a small matrix,it is used for blurring ,sharpening ,embossing,edge detection, and more </li></ul><figure id="bbee39fb-fe6c-4f15-989e-23cd0230852c" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2010.png"><img style="width:979px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2010.png"/></a></figure><p id="8d657362-709c-4d9e-9f49-68429ac1633f" class="">
+</p><h3 id="fdd31ced-cad2-4b35-b6ca-d3b2d28a5d4c" class=""><mark class="highlight-teal"><strong>Depth: </strong></mark></h3><p id="5a4b52e7-2b1e-4055-b3dc-3a4c62d4b26e" class="">—It is the number of bits used to represent the color of each pixel in an image. The depth determines the range of colors that can be represented, and it is often expressed in bits per channel.</p><ul id="1e4902c3-6331-46d3-ac86-b362ad1d6a5f" class="bulleted-list"><li style="list-style-type:disc"><strong>8-bit depth</strong>: Each color channel (Red, Green, Blue) is represented using 8 bits, allowing for 256 different intensity levels for each channel. This is common in images with a total of 24 bits per pixel (8 bits per channel).</li></ul><ul id="026d49c1-578b-42c1-96c8-329d8edde81f" class="bulleted-list"><li style="list-style-type:disc"><strong>16-bit depth</strong>: Each color channel is represented using 16 bits, providing a larger range of possible intensity levels compared to 8-bit depth. This is often used in scientific or medical imaging.</li></ul><ul id="11f491e8-6bc7-4386-b37a-450e3f544a86" class="bulleted-list"><li style="list-style-type:disc"><strong>32-bit depth</strong>: Each color channel is represented using 32 bits, and this is often used in high dynamic range (HDR) images. The extra precision allows for a wider range of color value</li></ul><p id="902a45f1-3628-4352-b38d-6ba64a6eeac1" class="">
+</p><h3 id="49d471d1-3702-4e88-9ad7-20ecb74a3797" class=""><mark class="highlight-teal">Kernel:</mark></h3><ul id="92300e87-640b-4adb-96c4-db54d9730eed" class="bulleted-list"><li style="list-style-type:disc">In image processing, a kernel is a small matrix used for various operations, such as convolution. Convolution involves sliding the kernel over the image and performing a mathematical operation at each step. The choice of kernel determines the nature of the image processing operation being applied.</li></ul><ol type="1" id="0b140b6b-87ee-48f9-b212-1abfa430347b" class="numbered-list" start="1"><li><strong>Identity Kernel:</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a60b98c8-28fe-4529-ac9c-e26775fdb510" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">[[0, 0, 0],
+ [0, 1, 0],
+ [0, 0, 0]]
+
+</code></pre><p id="c5db1dd5-22f4-4292-8efd-bd22da83ea72" class="">This kernel leaves the image unchanged. It&#x27;s often used to demonstrate the concept of convolution.</p></li></ol><ol type="1" id="5a06110f-b5f3-4e79-9d8a-12be88026d66" class="numbered-list" start="2"><li><strong>Box Blur Kernel:</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="de92cd9c-ede2-4acf-be17-3801cfee78ae" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">
+[[1/9, 1/9, 1/9],
+ [1/9, 1/9, 1/9],
+ [1/9, 1/9, 1/9]]
+
+</code></pre><p id="2715edcd-f6a0-42ea-932f-c307ddd84c91" class="">This kernel is used for simple blurring. It calculates the average of the neighboring pixels.</p></li></ol><ol type="1" id="0ce52e5b-9d65-499e-9db6-d6b190d0d739" class="numbered-list" start="3"><li><strong>Edge Detection Kernels:</strong><ul id="d25c0909-e208-4e37-9779-a1743614d9fd" class="bulleted-list"><li style="list-style-type:disc">Sobel Kernel for horizontal edges:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="d0300573-fd95-4ad6-8a9e-c6f80814d40b" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">[[-1, -2, -1],
+ [0, 0, 0],
+ [1, 2, 1]]
+
+</code></pre></li></ul><ul id="359bac8a-14f6-4e85-b97b-bec3577aef34" class="bulleted-list"><li style="list-style-type:disc">Sobel Kernel for vertical edges:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5ff6b993-8b05-47d7-8627-c03455637fc2" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">[[-1, 0, 1],
+ [-2, 0, 2],
+ [-1, 0, 1]]
+
+</code></pre></li></ul><p id="c5a50958-62b1-41ce-a15e-f76bb3b7210a" class="">These kernels are used for edge detection, emphasizing changes in intensity.</p></li></ol><ol type="1" id="92ca65a2-c9da-4496-b17d-0729e0de15c7" class="numbered-list" start="4"><li><strong>Sharpening Kernel:</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="799fd0ef-b931-41d0-ba73-7fc5c33d0173" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">[[0, -1, 0],
+ [-1, 5, -1],
+ [0, -1, 0]]
+
+</code></pre><p id="083af115-17b3-46ab-8986-6974ca130e85" class="">This kernel enhances edges, making the image appear sharper.</p></li></ol><ol type="1" id="030d256b-8eb5-40fb-82ef-e3d2d1659a1c" class="numbered-list" start="5"><li><strong>Gaussian Blur Kernel:</strong><br/>The Gaussian blur is commonly used for smoothing or blurring. The kernel size and values depend on the desired level of blurring.<br/><p id="fa51f678-d3e9-4e35-8b10-a56516921f57" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="4e40cdda-bbdf-4b8f-b9c7-289397e76269" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">[[1, 2, 1],
+ [2, 4, 2],
+ [1, 2, 1]]
+</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="ee962b20-7b39-4821-a690-1d11187dfa47" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">img1 = cv2.filter2D(img,-1,identity_kernel)
+img2 = cv2.filter2D(img,-1,Sharpening_Kernel)
+img3 = cv2.filter2D(img,-2,Sharpening_Kernel)
+img4=cv2.filter2D(img,-1,gaussien_kernel)</code></pre><figure id="38a65137-e512-4b1a-ab04-f6e850c9ee9a" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2011.png"><img style="width:1569px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2011.png"/></a></figure><p id="bd7ffd0c-4ea5-4a7a-8d14-09f6578480c7" class="">
+</p><ul id="7ec2bab7-759b-4b43-bda1-db329fa3963f" class="bulleted-list"><li style="list-style-type:disc">As in one dimensional signals,images also can be filtered with various <strong>low_ pass filters(LPF): removing noise,high pass filters(HPF):finding edges in the image </strong></li></ul><ul id="08512274-9169-4b42-bb65-1a2a6ba3f467" class="bulleted-list"><li style="list-style-type:disc"><code>img_blur = cv2.blur(img, (1, 1))</code></li></ul><p id="499760e1-a955-4170-8005-46588adce3a8" class="">-Blurring, also known as smoothing, is a common image processing operation that reduces the sharpness of edges or fine details in an image. It&#x27;s often used for various purposes, such as noise reduction, image preprocessing</p><p id="96c1c8e9-eda6-4148-bdd1-337e24cc0948" class="">-The averaging algorithm you mentioned is a simple blurring algorithm. The basic idea is to replace each pixel value in the image with the average value of its neighboring pixels. This process helps to reduce high-frequency components, resulting in a smoother image.</p><h2 id="dc363947-e250-4211-ac42-8844c49e0b59" class=""><mark class="highlight-teal">Gaussien Filter:</mark></h2><p id="6bc01aca-b694-4dae-85cf-737a1d28845c" class=""><code>img6=cv2.GaussianBlur(img</code><code><strong>,</strong></code><code>(</code><code><strong>1,1</strong></code><code>)</code><code><strong>,0</strong></code><code>)</code></p><p id="4668dff7-12a9-423c-9eba-8ecd85c4cc91" class="">-0:This parameter represents the standard deviation of the Gaussian kernel along the x-axis. In your example, it&#x27;s set to 0, which means that OpenCV will automatically calculate the standard deviation based on the kernel size. You can also provide a specific value for the standard deviation if needed.</p><p id="ed4e0628-c885-4b85-be2d-a6f1856574ee" class="">-(1,1):This is the kernel size. The kernel size determines the extent of the blur</p><p id="a6654028-a6b2-40be-a91d-5ce70268f79d" class="">-<strong>Gaussian blur </strong>is a popular image processing technique used to reduce noise and detail in an image. It&#x27;s named after <strong>the Gaussian distribution</strong> because it involves convolving the image with<strong> a Gaussian filter</strong>, which has a bell-shaped curve when plotted.<strong> The Gaussian filter is a weighted average of neighboring pixel values, with the weights determined by the Gaussian function.</strong></p><p id="257afdb4-3e20-4283-8757-19a2a0bba5f4" class="">The Gaussian blur is characterized by the standard deviation parameter (σ), which controls the spread or width of the Gaussian curve. A larger standard deviation results in a wider, smoother blur, while a smaller standard deviation produces a narrower blur.</p><figure id="5b1066fa-a615-4c29-86e8-48d14b7bd1c6" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2012.png"><img style="width:1409px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2012.png"/></a></figure><p id="9c883da1-f1b9-46eb-8077-39e960f7afdd" class="">-Applying a Gaussian blur to an image involves convolving the image with a Gaussian kernel. The larger the kernel (determined by the standard deviation), the more the high-frequency components (fine details, noise) are suppressed, resulting in a smoother appearance.</p><p id="750433ed-32ae-4711-9dc1-8a5956a5d158" class="">-The Gaussian blur is characterized by <strong>the standard deviation parameter (σ)</strong>, which controls the spread or width of the Gaussian curve. A larger standard deviation results in a wider, smoother blur, while a smaller standard deviation produces a narrower blur.</p><ul id="33eaffde-9c6e-4778-b3c6-73a6a2129625" class="bulleted-list"><li style="list-style-type:disc"><code>img_blur = cv2.medianBlur(img, 5)</code></li></ul><p id="5d6b812a-9a2c-44ee-9b4c-3355673f1175" class="">-Median blur is a nonlinear operation that replaces each pixel value with the median value of its neighborhood. It is particularly effective at removing salt-and-pepper noise from images while preserving edges. This makes it a good choice for denoising images with impulsive noise.</p><h1 id="eb51ee22-7636-4528-b801-7b3bf37de507" class=""><mark class="highlight-red">      Edge Detection:</mark></h1><h3 id="2b087eda-49f3-43ad-8af7-c12fc52b6272" class=""><mark class="highlight-teal">Image Laplacien Gradient:</mark></h3><p id="18719cdb-db5a-4b9e-98be-ab22ce43e6ed" class="">-Directional change in the intensity or color in an image </p><p id="0fffebda-87ae-4346-acbf-f0c697086234" class=""><code>lap = cv2.Laplacian(img, cv2.CV_64F)<br/>lap = np.uint8(np.absolute(lap))<br/></code></p><p id="6fdb1512-5f18-473d-b08e-149c4bb3fd38" class="">⇒ Compute the Laplacian of an image. It applies a <strong>2D Laplace operator</strong> to the image, which is a derivative operator used for edge detection.</p><p id="59f73758-1868-4668-b31f-1ad78e03b071" class="">-<code><strong>cv2.CV_64F</strong></code>: This is the data type of the output image. The Laplacian result may contain negative values, so a floating-point data type is often used to represent both positive and negative values. <code><strong>cv2.CV_64F</strong></code> corresponds to a 64-bit floating-point data type.</p><p id="bed2ae4c-c53d-4826-99a5-ed0b2485eb0a" class="">-</p><ul id="a5613e62-bc13-4bb8-8509-38c6c4194631" class="bulleted-list"><li style="list-style-type:disc"><code><strong>np.absolute</strong></code>: This NumPy function is used to compute the absolute values of the Laplacian result, as you are interested in the magnitude of the gradient rather than the direction.</li></ul><ul id="a3c7e169-4832-4725-ba1e-70c8efab5f00" class="bulleted-list"><li style="list-style-type:disc"><code><strong>np.uint8</strong></code>: This is then used to convert the result to an unsigned 8-bit integer. The Laplacian values are scaled and converted to the range [0, 255] suitable for display as an image.</li></ul><h3 id="2b7cec72-839a-44b2-a0cb-0753223653fc" class=""><mark class="highlight-teal">The Sobel operator:</mark></h3><p id="5ce6a92b-fb30-4d28-bed8-ea2fc995f211" class="">-The Sobel operator is a convolution-based edge detection operator used in image processing and computer vision. It is designed to highlight edges in an image by computing the gradient of the image intensity. The Sobel operator uses convolution with small, simple filters (kernels) to approximate the derivative of the image intensity in the x and y directions.</p><p id="a3fb1274-b259-4e14-845a-b25de16e975e" class="">-<code>img1 = cv2.Sobel(img, cv2.CV_64F, 1, 0)</code></p><p id="aa26847b-d498-4caf-bca3-5b24c302ec0d" class="">-</p><p id="796b8fc5-b961-461e-8d8b-ad9d4eb42f0d" class="">For a 3x3 Sobel operator, the filters for the x-direction (Sobel X) and y-direction (Sobel Y) are as follows:</p><p id="df8d1fae-5e77-4f0b-a44e-f95fc5f8b84a" class="">Sobel X=[−101−202−101]Sobel X=⎣⎡−1−2−1000121⎦⎤</p><p id="3844853d-f95d-4f62-a226-58f1d671becf" class="">Sobel Y=[−1−2−1000121]Sobel Y=⎣⎡−101−202−101⎦⎤</p><p id="17a5ed67-5342-4f4c-a063-ba165adb8274" class="">The Sobel operator calculates the gradient of the image by convolving the image with these kernels. The result of the convolution in the x-direction highlights edges running vertically, and in the y-direction, it highlights edges running horizontally.</p><h2 id="5a34fff9-26ed-4f8a-a32a-34cd99df8f7f" class=""><mark class="highlight-teal">The canny edge detection algorithm:</mark></h2><p id="4c7957d4-cab4-41a5-b485-89185f0ae625" class="">
+</p><ul id="5424d8c9-ef5e-47a1-9861-9bdc7ec099e1" class="bulleted-list"><li style="list-style-type:disc">The canny edge detection algorithm is composed of 5 steps:</li></ul><p id="5b26fc3b-d33b-4d25-bbf9-9d6c3e48fc38" class="">— Noise reduction</p><p id="559a497c-e44e-400c-b8ae-2d09bef2f836" class="">—gradient calculation</p><p id="da040d6a-d07f-4102-9138-01db2e7341ec" class="">—non maximum_suppression</p><p id="aedca6a9-005d-425a-97b7-b2624705d260" class="">—double treshold</p><p id="97a42371-23c5-4c63-8274-506f450c5fb5" class="">—edge tracking by hysteresis</p><p id="ed871d51-2598-416a-a92a-be716fccfa04" class="">
+</p><p id="9415010a-06d6-4f17-8fca-2000048427f1" class=""><code>    canny = cv2.Canny(img,treshold1,treshold2)<br/><br/></code></p><p id="97e2ff6d-9f3a-4e7b-a137-759d54863dc9" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2915efe4-a595-459c-a1dc-3865cee06f8a" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">import cv2
+import numpy as np
+
+path = r&#x27;C:\Users\T.M.S\OneDrive\Bureau\OPENCV tuto\chela.PNG&#x27;
+img = cv2.imread(path,0)
+
+def nothing(x):
+    pass
+
+cv2.namedWindow(&#x27;image&#x27;)
+cv2.createTrackbar(&#x27;T1&#x27;,&#x27;image&#x27;,0,255,nothing)
+cv2.createTrackbar(&#x27;T2&#x27;,&#x27;image&#x27;,0,255,nothing)
+
+while True:
+    treshold1 = cv2.getTrackbarPos(&#x27;T1&#x27;,&#x27;image&#x27;)
+    treshold2 = cv2.getTrackbarPos(&#x27;T2&#x27;,&#x27;image&#x27;)
+
+    canny = cv2.Canny(img,treshold1,treshold2)
+
+    # Display the Canny edge detection result
+    cv2.imshow(&#x27;image&#x27;,canny)
+
+    key = cv2.waitKey(1) &amp;0xFF
+if key ==27:  # Break the loop when the &#x27;Esc&#x27; key is pressed
+        break
+</code></pre><figure id="87219cb3-77ef-4f25-8c80-38f9c5feb9ae" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2013.png"><img style="width:1568px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2013.png"/></a></figure><figure id="163ef854-1013-4ccf-9815-7deb2633a18c" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2014.png"><img style="width:1569px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2014.png"/></a></figure><p id="f1c21acb-0639-41a1-a003-0e969b81334e" class="">
+</p><p id="f1f43920-f5f6-4680-a962-7a886a6015a9" class="">-</p><h2 id="c59b38a1-e8ab-4087-9419-864f85b1da4f" class="">      <mark class="highlight-teal">Pyramids:</mark></h2><figure id="30bb91e7-bb1a-4d1b-89c8-036c021abe45" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2015.png"><img style="width:533px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2015.png"/></a></figure><p id="c8b8a169-726e-4f8a-9ca9-86fcf0b7b316" class="">-<code><strong>cv2.pyrDown()</strong></code> function reduces the size of the input image by half. It works by smoothing and then subsampling the original image, creating a lower-resolution version of it. This process is often used in computer vision and image processing applications where lower resolution is acceptable for certain tasks, such as feature detection or object recognition.</p><ul id="43a73d74-f8ce-418b-9011-01c39ee7d864" class="bulleted-list"><li style="list-style-type:disc"><code> combined = np.hstack((img[:, :256], img1[:, :256]))<br/><br/></code>-This line is concatenating the left part of the first image (<code><strong>img[:, :256]</strong></code>) with the left part of the second image (<code><strong>img1[:, :256]</strong></code>) horizontally, creating a new image where the content of both images is displayed side by side. This is often done for visualization purposes or as a step in certain image processing tasks.</li></ul><ul id="4c0bc36c-c69f-47ba-b4e1-d59f1da99138" class="bulleted-list"><li style="list-style-type:disc">Note:</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6917846d-14c2-4bf6-b3fa-c219fe45e20d" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">img=cv2.imread(path)   :colored image
+gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY) :grayscale image
+ret,thresh=cv2.threshold(gray,127,255,0)  ;binary image</code></pre><h2 id="2216cc46-220a-4153-a0f2-129341afd4b8" class=""><mark class="highlight-teal">Find and Draw Contours :</mark></h2><p id="989d666e-f447-42d9-94f2-d6578a51cb71" class="">-Contours is a python<strong> List</strong> of all the contours in an image ,each individual contour of the list is a <strong>numpy array of (x,y) coordinates of boundary points of the object .</strong></p><p id="8b7a07c6-21e6-4275-8b7c-c5ce5ad30a28" class="">
+</p><p id="fbfc1b75-f807-413d-993c-d2a441c1d971" class="">     print(contours[0])</p><p id="0d8788c0-febf-4b61-a0bb-edc659e0edd8" class="">==⇒ [[[0 0]]</p><p id="3ab90ec0-1db6-4fa7-a470-41b01462bd18" class="">[[0 1]]</p><p id="28468b21-f10f-433a-96b8-d0482df89d60" class="">[[0 2]]</p><p id="ad306cd5-a466-4629-8b80-777bdfa83260" class="">...</p><p id="736feae9-bb2c-4fd1-befe-22d1d0642f4c" class="">[[3 0]]</p><p id="c01bb185-842c-4694-ac85-1cac857f3587" class="">[[2 0]]</p><p id="3230b52b-ec40-416b-9311-4f9f9cb24895" class="">[[1 0]]]</p><p id="192f095a-1dad-4a1a-b82a-89c9d386ba35" class="">-<code><strong>cv2.findContours()</strong></code><strong>: a </strong> function is typically applied to <strong>binary or grayscale images</strong>, where contours can be easily identified based on differences in pixel intensities. When working with colored images, it&#x27;s common practice to convert them to grayscale first before applying the contour detection.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="d6e9d886-1598-4734-b9c9-3f033998d18e" class="code"><code class="language-JavaScript">import cv2
+import numpy as np
+
+# Read a colored image
+img = cv2.imread(&#x27;path/to/your/image.jpg&#x27;)
+
+# Convert the image to grayscale
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# Apply thresholding to create a binary image
+ret, thresh = cv2.threshold(gray, 127, 255, 0)
+
+# Find contours in the binary image
+contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
+
+# Draw the contours on the original image
+cv2.drawContours(img, contours, -1, (0, 255, 0), 2)
+
+# Display the result
+cv2.imshow(&#x27;Contours&#x27;, img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()</code></pre><p id="c2e372bb-72ae-4b63-9e91-6a001c06d1f5" class="">-<code><strong>cv2.RETR_TREE</strong></code>: This is the retrieval mode for the contours. <code><strong>cv2.RETR_TREE</strong></code> retrieves all of the contours and reconstructs a full hierarchy of nested contours. Other retrieval modes are available, such as <code><strong>cv2.RETR_EXTERNAL</strong></code> (only retrieves the extreme outer contours) or <code><strong>cv2.RETR_LIST</strong></code> (retrieves all contours without reconstructing a hierarchy).</p><p id="f9b4be64-2acf-4afa-a01f-3efd166f5015" class="">-<code><strong>cv2.CHAIN_APPROX_NONE</strong></code>: This is the contour approximation method. In this case, <code><strong>cv2.CHAIN_APPROX_NONE</strong></code> means that all the contour points are stored, without any approximation. Other options include <code><strong>cv2.CHAIN_APPROX_SIMPLE</strong></code> (compresses horizontal, vertical, and diagonal segments and leaves only their end points) and <code><strong>cv2.CHAIN_APPROX_TC89_L1</strong></code> or <code><strong>cv2.CHAIN_APPROX_TC89_KCOS</strong></code> (applies the Teh-Chin chain approximation algorithm)</p><ul id="466d7936-0878-4a20-986d-a4c138ca1c80" class="bulleted-list"><li style="list-style-type:disc"><code>cv2.drawContours</code>():Draw contours on original image, find contours in grayscale image </li></ul><p id="e55150b7-ea66-47ad-8d3c-8df56b1ed0ae" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="14630bc6-900e-4002-a673-cadaeb6acaa9" class="code"><code class="language-JavaScript">contours,hierarchy=cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
+cv2.drawContours(img,contours,-1,(0,255,0),2)
+-1:All the contours
+2:thickness
+img:original image </code></pre><p id="3dd84edf-e0fa-45fb-ac24-f45dbf2e9e90" class=""><a href="https://labs.cognitiveclass.ai/v2/tools/jupyterlab?ulid=ulid-f7c86ff2267614a9d8031ab610e228307f3cf478">https://labs.cognitiveclass.ai/v2/tools/jupyterlab?ulid=ulid-f7c86ff2267614a9d8031ab610e228307f3cf478</a></p><p id="258e073d-9d65-4f28-8407-e8901e743e51" class="">
+</p><ul id="c815e623-b04c-4d4b-be21-bd22900425a5" class="bulleted-list"><li style="list-style-type:disc">Cropping:  It  is &quot;cutting out&quot; the part of the image and throwing out the rest</li></ul><figure id="8ef6d890-761a-4d14-8b1d-94317ecbfb8a" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2016.png"><img style="width:1059px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2016.png"/></a></figure><figure id="edb9ec13-e6ee-45d9-a482-c343bb0eeb21" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2017.png"><img style="width:1110px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2017.png"/></a></figure></li></ol><figure id="846e42f0-c0ac-4dc2-becd-d294977b2763" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2018.png"><img style="width:1017px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2018.png"/></a></figure><figure id="a2efcb9e-4e95-4601-aa3c-de5999f7c2ae" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2019.png"><img style="width:1063px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2019.png"/></a></figure><p id="4cfca9dd-8912-426f-b1b7-b399c3794a1a" class="">
+</p><h3 id="7a9a6f5f-76d2-4bbd-83f0-bdd0253433c6" class=""><strong><mark class="highlight-teal">Histogram:</mark></strong></h3><p id="a0bb0386-9f36-4a84-b37e-e54ec1754ca0" class="">-A histogram is an accurate graphical representation of the distribution of numerical data.</p><p id="fdfb1a5b-09d2-40d1-a869-52e5cea3184c" class="">-To construct a histogram, the first step is to “bin” the range of values — that is, divide the entire range of values into a series of intervals — and then count how many values fall into each interval.</p><p id="c2173ec4-e088-4ac0-9bca-cc33379f594a" class=""><code>histogram = cv2.calcHist([img]</code><code><strong>, </strong></code><code>channels</code><code><strong>, </strong></code><code>None</code><code><strong>, </strong></code><code>hist_bins</code><code><strong>, </strong></code><code>hist_range)</code></p><figure id="001abab7-ae64-415c-9e7b-66b5beeb24ed" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2020.png"><img style="width:764px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2020.png"/></a></figure><h3 id="c4f868be-49e0-4cc5-835e-4b6109cda2bd" class=""><mark class="highlight-teal">Intensity Transformations:</mark></h3><figure id="113c60bf-05b8-4f4b-9b9b-92cdb3cf5d0b" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2021.png"><img style="width:1170px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2021.png"/></a></figure><figure id="53779bcb-0571-4666-b77e-444fc6cd8f73" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2022.png"><img style="width:1133px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2022.png"/></a></figure><h3 id="8dedf94f-329e-4302-8077-919dffc5d642" class=""><mark class="highlight-teal">Image Negative:</mark></h3><p id="6895fcf1-d25a-42bc-aad9-f3ef3f729763" class=""><code>img3=-img+</code><code><strong>255</strong></code></p><p id="8726e743-0672-484e-9dda-a48249625653" class="">-Subtracting each pixel value in the image (<code><strong>img</strong></code>) from 255 and then negating the result. This effectively creates a negative of the image and shifts the pixel values so that the darkest pixels become the brightest and vice versa.</p><figure id="8df236f7-056d-4ea4-924e-d418e67724d9" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2023.png"><img style="width:288px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2023.png"/></a></figure><figure id="173ba265-fd7d-4fe1-86f8-dcbe35aced94" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2024.png"><img style="width:480px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2024.png"/></a></figure><p id="2ef8ac4b-38ce-4e9a-abcf-a97083efd9ef" class="">
+</p><figure id="15f1deb5-e66e-4081-ad73-5bb4b184618b" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2025.png"><img style="width:480px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2025.png"/></a></figure><p id="7ea5c550-d936-4359-9fc7-6eae2babdec1" class="">
+</p><figure id="c991bef8-fa26-486b-b421-9b2fc9c2637c" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2026.png"><img style="width:480px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2026.png"/></a></figure><h3 id="a205e85e-64ba-4b92-9389-a1707c529071" class=""><mark class="highlight-teal">Brightness and Contrast Adjustments:</mark></h3><figure id="b93a6b6a-03a0-491d-ac9d-a2f62f97919e" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2027.png"><img style="width:672px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2027.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="46e55f30-a1c3-4e01-a993-4000f407b799" class="code"><code class="language-JavaScript">       img4 = cv2.convertScaleAbs(img, -1, 255):</code></pre><ul id="d1b874db-510b-4496-810d-0d1c0f842537" class="bulleted-list"><li style="list-style-type:disc">This line uses <code><strong>cv2.convertScaleAbs()</strong></code> to perform a<strong> linear transformation</strong> on the input image (<code><strong>img</strong></code>). The function scales and shifts the input pixel values according to the specified alpha and beta parameters.</li></ul><figure id="50d63fa4-6d21-4b14-a9b3-5f322d0b28fd" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2028.png"><img style="width:576px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2028.png"/></a></figure><h3 id="88531491-9da9-45de-b27f-e3fd2d51cf3d" class=""><mark class="highlight-teal">Histogram Equalization: </mark></h3><p id="8aa0569c-23d4-41ff-9536-dc0878de0759" class="">The <code><strong>cv2.equalizeHist()</strong></code> function in OpenCV is used for histogram equalization of grayscale images. Histogram equalization is a technique to enhance the contrast of an image by spreading out the intensity values across the entire range. It is particularly useful when an image has a limited dynamic range, and certain intensity values dominate the image.</p><p id="adca67dd-757f-4980-97fa-a0998e729cdc" class="">Here&#x27;s a brief explanation of the role of <code><strong>cv2.equalizeHist()</strong></code>:</p><ol type="1" id="0d3e0d8f-ac94-409a-b554-ab199762883b" class="numbered-list" start="1"><li><strong>Enhancing Contrast:</strong><ul id="1d7ca12e-4281-43be-9848-8842cf27214b" class="bulleted-list"><li style="list-style-type:disc">Histogram equalization redistributes the intensity values of an image so that the full range of pixel values (usually 0 to 255 in an 8-bit image) is utilized. This helps in enhancing the overall contrast of the image.</li></ul></li></ol><ol type="1" id="3dde28ff-b5ff-4dca-8525-be7bc5e30b0f" class="numbered-list" start="2"><li><strong>Improving Visibility:</strong><ul id="27fd7fcb-bc90-4285-954a-34c1842c8678" class="bulleted-list"><li style="list-style-type:disc">In images where the pixel values are concentrated in a specific range, details may be lost or difficult to distinguish. Histogram equalization aims to spread out the pixel values, making the image more visually appealing and improving the visibility of details.</li></ul></li></ol><ol type="1" id="2bb9a916-2a08-43c3-9e04-0636ba2bdbcf" class="numbered-list" start="3"><li><strong>Adaptive Brightness Adjustment:</strong><ul id="da19502b-b737-4115-948f-ba293a354949" class="bulleted-list"><li style="list-style-type:disc">It acts as a form of adaptive brightness adjustment. It can be particularly effective in images where the lighting conditions vary across different regions.</li></ul></li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="470c7278-bc0f-4812-a7ae-c90211096e6d" class="code"><code class="language-JavaScript">img_equalized = cv2.equalizeHist(img)</code></pre><h3 id="0872a749-f4be-4116-89ea-f97477ed1f43" class=""><mark class="highlight-teal">Tresholding and simple Segmentation:</mark></h3><figure id="1ba2790f-fb06-4b8a-adce-e07f4aba8f57" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2029.png"><img style="width:552px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2029.png"/></a></figure><h3 id="e39794e5-9cb2-4c8b-9487-0a37143a0e11" class=""><mark class="highlight-teal">Histogram:</mark></h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="99c1757f-f281-431f-8f39-fd32022d5382" class="code"><code class="language-JavaScript">import matplotlib.pyplot as plt
+import cv2
+import numpy as np
+  def plot_image   (image_1, image_2,title_1=&quot;Orignal&quot;, title_2=&quot;New Image&quot;):
+    plt.figure(figsize=(10,10))
+    plt.subplot(1, 2, 1)
+    plt.imshow(image_1,cmap=&quot;gray&quot;)
+    plt.title(title_1)
+    plt.subplot(1, 2, 2)
+    plt.imshow(image_2,cmap=&quot;gray&quot;)
+    plt.title(title_2)
+    plt.show()
+ def   plot_hist(old_image, new_image,title_old=&quot;Orignal&quot;, title_new=&quot;New Image&quot;):
+    intensity_values=np.array([x for x in range(256)])
+    plt.subplot(1, 2, 1)
+    plt.bar(intensity_values, cv2.calcHist([old_image],[0],None,[256],[0,256])[:,0],width = 5)
+    plt.title(title_old)
+    plt.xlabel(&#x27;intensity&#x27;)
+    plt.subplot(1, 2, 2)
+    plt.bar(intensity_values, cv2.calcHist([new_image],[0],None,[256],[0,256])[:,0],width = 5)
+    plt.title(title_new)
+    plt.xlabel(&#x27;intensity&#x27;)
+    plt.show()</code></pre><p id="c77be83e-432a-4229-8a28-cf6e7c2da01b" class=""><code><strong>hist[:, 0]</strong></code> extracts all the values in the first column of the histogram array. In the context of a histogram, each row corresponds to a specific intensity level, and the value in the first column of that row represents<span style="border-bottom:0.05em solid"> the frequency or count of pixels with that intensity level in the image.</span></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5a8dd442-d7eb-487e-bac7-95f4a40bcdb3" class="code"><code class="language-JavaScript">hist = cv2.calcHist([goldhill],[0], None, [256], [0,256])
+intensity_values = np.array([x for x in range(hist.shape[0])])
+plt.bar(intensity_values, hist[:,0], width = 5)
+plt.title(&quot;Bar histogram&quot;)
+plt.show()</code></pre><p id="cdfb2ed8-414e-4542-963a-994af74fffb4" class=""><code><strong>hist.shape[0]==histSize</strong></code><strong> : </strong>it  returns the number of rows/bins/levels  in the NumPy array <code><strong>hist</strong></code>. In the context of a histogram, <span style="border-bottom:0.05em solid">each row corresponds to a bin or a specific intensity level.</span></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c02c7b73-a03e-4add-ac55-43bf26dc30ea" class="code"><code class="language-JavaScript">import cv2
+import matplotlib.pyplot as plt
+
+# Load an image
+image = cv2.imread(&#x27;example.jpg&#x27;, cv2.IMREAD_GRAYSCALE)
+
+# Calculate histogram
+hist = cv2.calcHist([image], [0], None, [256], [0,256])
+
+# Plot the histogram
+plt.plot(hist)
+plt.title(&#x27;Histogram&#x27;)
+plt.xlabel(&#x27;Pixel Value&#x27;)
+plt.ylabel(&#x27;Frequency&#x27;)
+plt.show()</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e8573a3f-0647-4412-bc35-61bcbfc65f92" class="code"><code class="language-JavaScript">hist=cv2.calcHist(images, channels, mask, histSize, ranges[, hist[, accumulate]])</code></pre><ul id="c7283ea1-90c4-4c08-9251-9c0aa61f6e3a" class="bulleted-list"><li style="list-style-type:disc"><code><strong>images</strong></code>: This is the source image (or list of images). It should be in square brackets, even if you&#x27;re using a single image.</li></ul><ul id="9128f5cb-617d-4034-ad9a-6cda1c406aa2" class="bulleted-list"><li style="list-style-type:disc"><code><strong>channels</strong></code>: This is the channel or channels for which you calculate the histogram. It is also specified in square brackets. For <strong>grayscale images, it is [0]</strong>, and for<strong> color images, it can be [0], [1], [2] to represent the Blue, Green, and Red channels, respectively.</strong></li></ul><ul id="cebe982b-baab-4e25-8dab-6345afdae83d" class="bulleted-list"><li style="list-style-type:disc"><code><strong>mask</strong></code>: An optional mask. If a mask is provided, the histogram will only be computed for the masked pixels.</li></ul><ul id="c4c6dd4e-632f-4013-b1dd-5827bc9652bd" class="bulleted-list"><li style="list-style-type:disc"><code><strong>histSize</strong></code>: This represents <strong>the number of bins or levels in the histogram</strong>. For example, [256] indicates 256 bins for a grayscale image.</li></ul><ul id="e97239a3-798e-42de-8bfb-bcc3c5cc567d" class="bulleted-list"><li style="list-style-type:disc"><code><strong>ranges</strong></code>: This is<strong> the range of pixel values</strong> to be considered. Typically, it is <strong>[0,256] for the full range of intensity values in an 8-bit image.</strong></li></ul><ul id="83e08d44-2daa-46af-9481-5378c19a7ab8" class="bulleted-list"><li style="list-style-type:disc"><code><strong>hist</strong></code>: This is the output histogram. It is an optional parameter.</li></ul><ul id="5507da3e-c4b7-4f61-b014-d287857d289d" class="bulleted-list"><li style="list-style-type:disc"><code><strong>accumulate</strong></code>: This is also an optional parameter. If it is set, the function does not clear the output histogram in the beginning. It is useful in the case of multiple images.</li></ul><figure id="e6df7713-527b-443c-b31f-8b4cc49736a4" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2030.png"><img style="width:384px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2030.png"/></a></figure><figure id="226073b3-a2ae-4fdc-9c7f-51c51d6f1814"><div class="source"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled.txt">Untitled</a></div></figure><h3 id="efc42744-1531-414a-93bf-82a2d6ca2477" class=""><mark class="highlight-teal">Geometric  transformations: </mark></h3><p id="e39de9fe-8e5f-4399-acc5-33e5544dc82e" class="">⇒Shrink or Expand the image </p><p id="91be1f07-56fd-4d8d-8d0d-79f789a0754d" class="">-Scaling </p><p id="cc03be73-a4c3-4c07-9ee6-71a3d1b11894" class="">-Rotation</p><p id="43b65ac0-25fe-474e-b60e-3cd7093b0438" class="">-translation </p><figure id="e7f40dd6-8bd6-4b82-8844-5494de8324bb" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2031.png"><img style="width:841px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2031.png"/></a></figure><figure id="54552a32-6978-4ee6-be35-0ab68a2a9eaf" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2032.png"><img style="width:1181px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2032.png"/></a></figure><figure id="9ece6b54-9503-4d1e-ad8b-aeb928a45b16" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2033.png"><img style="width:1148px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2033.png"/></a></figure><figure id="7aa1e7a7-5623-48a0-94bb-b5f318f4e541" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2034.png"><img style="width:576px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2034.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e2efa951-2977-4317-a1d3-cb42ec969586" class="code"><code class="language-JavaScript">new_dimensions = (new_width, new_height)
+
+resized_image = cv2.resize(image, new_dimensions) 
+resized_image = cv2.resize(image, None, fx=2, fy=1)
+fx:width
+fy:height</code></pre><p id="8526662e-716d-4449-88a7-89817edb587f" class="">
+</p><figure id="e2191549-6b23-4c72-b9bb-291661bfd312" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2035.png"><img style="width:240px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2035.png"/></a></figure><ul id="1c05259d-aefb-4173-b78e-3c32934a7222" class="bulleted-list"><li style="list-style-type:disc">The <code><strong>cv2.warpAffine()</strong></code> function in OpenCV is used for applying <strong>an affine transformation</strong> to an image. Affine transformations include operations such as translation, rotation, scaling, and shearing. This function takes an input image and a 2x3 transformation matrix as parameters and produces the transformed image.</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b7751697-b77a-4aa4-843b-8f5d2062dbea" class="code"><code class="language-JavaScript">import cv2
+import numpy as np
+
+# Load an image
+image = cv2.imread(&#x27;your_image.jpg&#x27;)
+
+# Define the translation matrix (tx, ty) - shift by 100 pixels to the right and 50 pixels down
+tx, ty = 100, 50
+translation_matrix = np.float32([[1, 0, tx], [0, 1, ty]])
+
+# Apply the affine transformation using cv2.warpAffine
+transformed_image = cv2.warpAffine(image, translation_matrix, (image.shape[1], image.shape[0]))
+
+# Display the original and transformed images
+cv2.imshow(&#x27;Original Image&#x27;, image)
+cv2.imshow(&#x27;Transformed Image&#x27;, transformed_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()</code></pre><p id="790fbeb6-e341-4f86-aa13-3917b08e7fbd" class="">—<code><strong>image.shape[1], image.shape[0])</strong></code> extracts the width and height of the original image, and these values are used as the size of the output image.</p><p id="32610afd-b8e2-492c-b40e-0cebc0c9f5a3" class="">—<code><strong>cv2.getRotationMatrix2D()</strong></code> is a function in the OpenCV library that is used to generate a 2D affine rotation matrix. This matrix can be used with <code><strong>cv2.warpAffine()</strong></code> to perform a rotation on an image.</p><p id="278acdc2-ee0e-4e7e-b3fb-ac258d1db103" class="">      </p><ul id="174cd328-845e-4409-8fa1-af716b4325f8" class="bulleted-list"><li style="list-style-type:disc"><code><strong>center</strong></code>: The rotation center, specified as a tuple (x, y).</li></ul><ul id="0babb766-0077-443e-b754-700c8add5db4" class="bulleted-list"><li style="list-style-type:disc"><code><strong>angle</strong></code>: The rotation angle in degrees.</li></ul><ul id="531101b8-fd43-4471-a1d5-69bf59f00761" class="bulleted-list"><li style="list-style-type:disc"><code><strong>scale</strong></code>: An optional scaling factor.</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c3d85faa-98d0-4fe5-bafa-af28efc84848" class="code"><code class="language-JavaScript">
+import cv2
+import numpy as np
+
+# Load an image
+image = cv2.imread(&#x27;your_image.jpg&#x27;)
+
+# Define the rotation center (center of the image)
+center = (image.shape[1] // 2, image.shape[0] // 2)
+
+# Define the rotation angle (clockwise)
+angle = 45
+
+# Define the scaling factor (optional)
+scale = 1.0
+
+# Get the rotation matrix
+rotation_matrix = cv2.getRotationMatrix2D(center, angle, scale)
+
+# Apply the affine transformation using cv2.warpAffine
+rotated_image = cv2.warpAffine(image, rotation_matrix, (image.shape[1], image.shape[0]))
+
+# Display the original and rotated images
+cv2.imshow(&#x27;Original Image&#x27;, image)
+cv2.imshow(&#x27;Rotated Image&#x27;, rotated_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()</code></pre><h3 id="6c8e4458-50bd-4208-9672-823984542610" class=""><mark class="highlight-teal">Spatial Operations: Convolution:Linear filtering</mark></h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="75c20b2e-2373-433d-9076-c4c15babcac1" class="code"><code class="language-JavaScript">cv2.filter2D(src, ddepth, kernel[, dst[, anchor[, delta[, borderType]]]])</code></pre><figure id="90e611d5-d132-4358-9241-822630d01173" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2036.png"><img style="width:336px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2036.png"/></a></figure><figure id="34d063ea-7f45-42b2-9ca9-2956448823f9" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2037.png"><img style="width:480px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2037.png"/></a></figure><figure id="37c36036-5bda-4565-a255-b930fbe61e95" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2038.png"><img style="width:480px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2038.png"/></a></figure><figure id="7e54d8ec-c2f5-4767-9020-0d672b3d69f1" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2039.png"><img style="width:192px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2039.png"/></a></figure><ul id="1aa05d04-805b-4a66-86f7-f6854a50eec8" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Edge Detection:</mark></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a93e0aa1-e2ca-4a78-957c-9d4493f4c5f2" class="code"><code class="language-JavaScript">
+ddepth: Desired depth of the destination image (use -1 for the same depth as the source image).
+# Load an image
+image = cv2.imread(&#x27;your_image.jpg&#x27;)
+
+# Define a 3x3 kernel for a simple blur
+kernel = np.ones((3, 3), np.float32) / 9  # averaging kernel
+
+# Apply the convolution using cv2.filter2D
+blurred_image = cv2.filter2D(image, -1, kernel)
+blurred_image = cv2.GaussianBlur(image, (5, 5), 0)</code></pre><p id="52d8a016-9f1b-48ca-8532-abd03d47a40f" class=""><mark class="highlight-brown"><strong>  Gaussian Blur (): </strong></mark></p><ul id="099a5d13-b6b3-4072-bc05-59ab33a2fe22" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose:</strong> Primarily used for blurring or smoothing an image.</li></ul><ul id="6021e5d0-e140-4a21-b71c-427529b60030" class="bulleted-list"><li style="list-style-type:disc"><strong>Kernel:</strong> Employs a Gaussian kernel, which is a bell-shaped curve. The standard deviation (<code><strong>sigma</strong></code>) parameter controls the width of the curve, influencing the extent of blurring.</li></ul><p id="8c0dd101-8e11-47cf-8479-0440f19899ab" class=""><mark class="highlight-brown"><strong>   Filter2D ():</strong></mark></p><ul id="410fb640-fbb8-45f6-af1d-ad3ae49a0356" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose:</strong> General-purpose convolution operation that allows you to apply a custom convolution kernel to an image. It can be used for various image processing tasks, including blurring, sharpening, edge detection, etc.</li></ul><ul id="c49631c7-95e8-4077-9dab-5b2b0185c6d7" class="bulleted-list"><li style="list-style-type:disc"><strong>Kernel:</strong> Any 2D convolution kernel can be used. The user can define a matrix that specifies how the neighborhood of each pixel should be weighted.</li></ul><h2 id="80e9d66b-d285-4cc3-885e-b96b3f62d907" class=""><mark class="highlight-teal">Image Classification:</mark></h2><p id="0275d4b3-a77a-4109-98c1-efe5ca02f29f" class="">-<strong>Image classification is the process of taking an image or picture and getting a computer to automatically classify it.</strong></p><p id="2a7087f2-6299-4e3e-8a9a-a5ba571edd22" class=""><strong>-Computers can&#x27;t understand images but they can understand the intensity values of a digital image. We will use the intensity values to classify the image.</strong></p><figure id="9daac30d-d044-442f-a9ca-6f78bb1ee901" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2040.png"><img style="width:432px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2040.png"/></a></figure><ul id="5ab93e0f-ddea-46c5-b695-5b0466ffe687" class="bulleted-list"><li style="list-style-type:disc"><strong>Challenges:</strong></li></ul><p id="854ae9b8-560c-449c-8a1e-a0d3d47d4bad" class="">—change in view point </p><p id="d625e68b-d3ee-4324-9b40-240fd2f707a5" class="">—illumination </p><p id="e5c50b1d-3dff-4696-bbf2-b100aac97c1b" class="">—Deformation</p><p id="24f56d8a-c4e7-4316-bcc8-d3693383e75d" class="">—Occlusion </p><p id="306ff3c7-e279-4750-9467-18241194b108" class="">—Background Clutter </p><ul id="01054531-02d7-4178-b377-0514d12b3244" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-pink"><strong>K-Nearest Neighbors</strong></mark></li></ul><ul id="327016c2-1cd3-406e-8852-2193ad1da538" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-pink"><strong>Feature Extraction</strong></mark></li></ul><ul id="807aaa69-980a-4eb5-abd1-35e60f856782" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-pink"><strong>Linear classifiers </strong></mark></li></ul><h2 id="11e95e36-0893-42fb-9627-108a025f9987" class=""><mark class="highlight-red">K-NN:</mark></h2><ul id="285edeb9-e427-4adc-96d7-8a92e55cf248" class="bulleted-list"><li style="list-style-type:disc"><strong>K- nearest neighbor. It is one of the simplest classification algorithms. KNN classifies </strong><span style="border-bottom:0.05em solid"><strong>the unknown data points</strong></span><strong> by finding </strong><span style="border-bottom:0.05em solid"><strong>the most common classes</strong></span><strong> in the k- nearest examples </strong></li></ul><ul id="ab13ccf6-db94-417b-a4e2-b6255a78afa1" class="bulleted-list"><li style="list-style-type:disc"><strong>K in KNN is a parameter that refers to</strong><span style="border-bottom:0.05em solid"><strong> the number of nearest neighbors</strong></span><strong> to include in the majority voting process</strong></li></ul><p id="c0b2cca7-2dfd-4ac9-9c6f-84e85763ab4d" class="">   <mark class="highlight-brown">   Exemple :</mark></p><figure id="b5d75dc0-d51e-4d2b-b484-2ca5e7b55e57" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2041.png"><img style="width:384px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2041.png"/></a></figure><figure id="0bc6d357-dd23-406e-8efe-23ec9751c7b3" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2042.png"><img style="width:384px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2042.png"/></a></figure><figure id="7579daad-9464-434d-a635-79a2bf3b37cc" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2043.png"><img style="width:308px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2043.png"/></a></figure><ul id="fa2f9e50-a547-4862-b39f-3045fd77e7c7" class="bulleted-list"><li style="list-style-type:disc"><strong>A data point is classified by majority votes from its k nearest neighbors </strong></li></ul><ul id="fd281260-da48-475d-a04f-378b0c005295" class="bulleted-list"><li style="list-style-type:disc"><strong>Machine Learning Model: make predictions by learning from past data available .</strong></li></ul><figure id="08d20e04-d8ae-4760-b067-c1128095874b" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2044.png"><img style="width:432px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2044.png"/></a></figure><figure id="842b7704-69d7-4c8f-ae7d-c4585312c714" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2045.png"><img style="width:432px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2045.png"/></a></figure><figure id="ebefa8c7-6411-4eb9-a8e7-e62f7f19db97" class="image"><a href="https://lh3.googleusercontent.com/a/AEdFTp7trcuDgzchPSApTM5mmEOS4CCj03FYyRhu6qBz=s96-c"><img style="width:24px" src="https://lh3.googleusercontent.com/a/AEdFTp7trcuDgzchPSApTM5mmEOS4CCj03FYyRhu6qBz=s96-c"/></a></figure><p id="4070e992-77ca-4c60-a448-0bf88d2e9720" class="">-To choose a value of k: </p><ul id="3fbbadc2-d4af-4ab0-ac31-0367b035dd81" class="bulleted-list"><li style="list-style-type:disc">sqrt(n):n is the total number of data points</li></ul><ul id="29a875d8-fcfd-48bc-b1df-6231f99fb19b" class="bulleted-list"><li style="list-style-type:disc">odd value of k is selected to avoid confusion between two classes of data </li></ul><p id="6b13ce71-2bf6-4b48-8d60-3670332692d3" class="">-The Euclidean Distance formula :</p><figure id="ea474a40-b664-4e2d-88e8-beb1529dd78a" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2046.png"><img style="width:335px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2046.png"/></a></figure><ul id="ebf62a6a-2950-4b90-8594-d0cd0a721774" class="bulleted-list"><li style="list-style-type:disc">A positive integar K is specified ,along with a new sample</li></ul><ul id="fb1c2dea-2763-477e-a154-1dcc4d9e698e" class="bulleted-list"><li style="list-style-type:disc">we select the k entries in our database which are closest to the new sample</li></ul><ul id="54641566-1bbc-4c26-8cab-10c134002fde" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid"><strong>we find the most common classification of these entries</strong></span></li></ul><ul id="39883196-ea19-4a67-b345-31a30017af40" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid"><strong>this is the classification we give to the new sample</strong></span></li></ul><figure id="0a682c96-7e92-4e6a-a9d4-2969a113d2d5" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2047.png"><img style="width:480px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2047.png"/></a></figure><figure id="f40736ca-057f-40bb-be78-6e1873fd0ce1" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2048.png"><img style="width:480px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2048.png"/></a></figure><ul id="5b99dc47-e34b-409c-9fa2-05048d0fa20c" class="bulleted-list"><li style="list-style-type:disc">We have a set of images we will refer to them as<strong> training samples</strong></li></ul><ul id="095a4a7d-3966-4206-9280-5cd09c53ae1b" class="bulleted-list"><li style="list-style-type:disc">Separating data into <strong>training and testing sets</strong> is an important part of model evaluation. We <span style="border-bottom:0.05em solid">use the test data to get an idea how our model will perform in the real world</span> When we split a data set, usually the larger portion of data is used for training and a smaller part is used for testing.we use a<span style="border-bottom:0.05em solid"> training set to build a model</span>, we then use a t<span style="border-bottom:0.05em solid">esting set to evaluate model performance</span></li></ul><ul id="b01d79f8-929a-49bf-8bbf-9004551a70ec" class="bulleted-list"><li style="list-style-type:disc">we have also the <strong>unknown sample </strong></li></ul><ul id="acc011b1-cd12-4baa-9147-7e3e03a9ba29" class="bulleted-list"><li style="list-style-type:disc">We will use the euclidean  distance to predict the label of the unknown class. As this is <strong>prediction</strong> of the class we use y hat,the hat means it&#x27;s <strong>an estimate</strong>, We calculate the distance from our unknown sample, we find<strong> the nearest point ( </strong><span style="border-bottom:0.05em solid"><strong>the minimum  euclidean distance</strong></span><strong>)</strong> or nearest neighbour we assign the label to the unknown sample</li></ul><ul id="cf60bccc-b5b3-455e-886e-dbe3a506aa16" class="bulleted-list"><li style="list-style-type:disc"><strong>Accuracy</strong> (<strong>précision)</strong>shows us how good our method works i,e the average number of times our model got it correct</li></ul><figure id="aa4249c6-e909-4c87-87a5-0b9202271649" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2049.png"><img style="width:528px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2049.png"/></a></figure><p id="31e5a04e-aa70-42e7-8327-d23ad1fd27c6" class="">y: The actual class Label</p><p id="9d03c1e0-2f83-476e-b7ea-ed499cab49f7" class="">y^:The predicted class Label  determined by the model </p><p id="14499712-dddc-420b-8376-596eb3f836e3" class="">accuracy =0.5 </p><ul id="731f5b57-8eb4-429d-bae7-38956f2c5b42" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">To select </span><span style="border-bottom:0.05em solid"><strong>k </strong></span><strong>,</strong>we use a subset called the validation data to determine the best K, this is called a hyper parameter. To select <strong>the Hyperparameter </strong>we <strong>split our data set into three parts</strong>, the <strong>training set, validation set, and test set</strong></li></ul><ul id="a3f3aa47-4e14-4812-b474-3ebae7c815a4" class="bulleted-list"><li style="list-style-type:disc">We select the hyperparameter K that <strong>maximizes accuracy on the validation set.</strong></li></ul><ul id="3c9b1f6f-7277-4d1e-a831-6b928d9c1e02" class="bulleted-list"><li style="list-style-type:disc">We use the training set for different hyperparameters </li></ul><ul id="6ab0dfea-2de1-4fe9-9779-081b9f151e11" class="bulleted-list"><li style="list-style-type:disc">We use the test data to see how the model will perform on the real world</li></ul><p id="f0f39ad8-a0b8-4c08-889c-e1efad471753" class="">
+</p><h3 id="41d60169-a5d1-4b92-a898-75274a5d1533" class=""><mark class="highlight-red">Linear Classifier:</mark></h3><ul id="c27db759-8307-43d2-9bcf-92a49424174c" class="bulleted-list"><li style="list-style-type:disc">Learnable parameters:</li></ul><p id="d17d9022-d5dd-4f09-84cc-96979428e9f2" class="">z=wX+b</p><p id="823b6085-4770-48b9-b74c-8de819121abf" class="">X=sample</p><p id="25941449-ea04-4b37-8278-6264499740bd" class="">z=w1x1+w2x2+……+b</p><p id="6d2982a3-b64d-407f-9a2b-3d3afe008096" class="">x1=algebra</p><p id="607b21d8-6de6-4c23-90ba-ce4345a534a9" class="">—w represents the <strong>weight term</strong> and b represents the<strong> bias term</strong></p><p id="fffe0904-674e-46ab-8763-cfbcc1ae1a3e" class="">—For arbitrary dimensions, this equation generalizes to a<strong> hyperplane</strong>. You can represent this equation as a dot product of <strong>row vector w</strong> and<strong> image x</strong>. This is called <strong>the decision plane</strong></p><p id="88adfac9-c7f8-45a2-acac-f7b76067d992" class="">—In two dimensions we can plot the equation as a plane.</p><figure id="5df82ccb-a2e2-40d3-b9e2-3b503c206917" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2050.png"><img style="width:480px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2050.png"/></a></figure><hr id="d786e265-fee3-409b-8645-ad8a66079dfa"/><ul id="e4bbf7f7-d8d2-422f-89a6-4cc27b6af785" class="bulleted-list"><li style="list-style-type:disc"><strong><mark class="highlight-red">Image Feature:</mark></strong></li></ul><p id="1f128e26-34a1-4408-8aec-c9ea3ba4d27b" class="">—Features are measurements taken from the image that help with classification</p><p id="bc4fbeff-609a-436d-ac42-3df9df277318" class="">—Classifying an image involves the relationship between pixels; a slight change in the image affects this relationship</p><p id="79b55f97-c8bd-4905-b9a0-d89673084fe5" class="">—One way too overcome this problem, to split image into sub-images and calculate the histogram for each sub-image</p><p id="32b04635-b843-4b89-82f6-7e36f9f4ba10" class="">—Histogram of oriented gradients – H.O.G., is one of many types of features that have been developed over the years</p><p id="1d746dec-17c5-4231-b621-282513276ab9" class="">— Linear classifiers are commonly used in both machine learning and computer vision tasks. A linear classifier is a type of algorithm that makes predictions by combining linear combinations of input features. The decision boundary, which separates different classes in the input space, is a hyperplane.</p><p id="5514e92e-a46d-405e-b4f5-e4b7ce36f6e5" class="">Here are a few examples of linear classifiers and their applications in both machine learning and computer vision:</p><ol type="1" id="610df331-4e87-4503-9486-1e14716b57e4" class="numbered-list" start="1"><li><strong>Logistic Regression:</strong><ul id="6ea881eb-467b-4856-a611-a0b22e789e46" class="bulleted-list"><li style="list-style-type:disc"><strong>Machine Learning:</strong> Logistic regression is a popular linear classifier used for binary classification tasks. It models the probability that an instance belongs to a particular class.</li></ul><ul id="4e1da788-91b5-41ed-a50d-f37c3ba9073d" class="bulleted-list"><li style="list-style-type:disc"><strong>Computer Vision:</strong> Logistic regression can be used for tasks such as image classification, where the goal is to categorize images into different classes.</li></ul></li></ol><ol type="1" id="55222691-b200-442c-8724-83de23295f6c" class="numbered-list" start="2"><li><strong>Support Vector Machines (SVM):</strong><ul id="d62d8102-caa2-4857-b508-038371c6f678" class="bulleted-list"><li style="list-style-type:disc"><strong>Machine Learning:</strong> SVM is a versatile linear classifier that can be used for both binary and multiclass classification. It aims to find a hyperplane that maximally separates different classes.</li></ul><ul id="30950cd9-ced3-46a3-ada0-20d95d8aa907" class="bulleted-list"><li style="list-style-type:disc"><strong>Computer Vision:</strong> SVMs are commonly used in computer vision tasks such as image classification and object detection.</li></ul></li></ol><ol type="1" id="827fd0fc-7ac8-4979-ab8e-ba82da56af35" class="numbered-list" start="3"><li><strong>Perceptron:</strong><ul id="96a20682-8e1d-471d-a010-c7c6b5000bf2" class="bulleted-list"><li style="list-style-type:disc"><strong>Machine Learning:</strong> The perceptron is a basic linear classifier that can be used for binary classification. It learns a linear decision boundary and updates its weights to correctly classify instances.</li></ul><ul id="2da83a04-6051-4463-acb2-04cd33ce3b03" class="bulleted-list"><li style="list-style-type:disc"><strong>Computer Vision:</strong> Perceptrons can be used for simple image classification tasks, although more complex models like neural networks are often preferred for more challenging computer vision problems.</li></ul></li></ol><ol type="1" id="9ba4d4ff-8090-4bb5-b088-d285e59592a0" class="numbered-list" start="4"><li><strong>Linear Support Vector Machine (Linear SVM):</strong><ul id="55b639b5-9a73-4be4-a68a-8301b0e0b4b7" class="bulleted-list"><li style="list-style-type:disc"><strong>Machine Learning:</strong> Similar to traditional SVM, linear SVM focuses on linear decision boundaries. It is used for classification tasks and aims to find the hyperplane with the maximum margin between classes.</li></ul><ul id="7b68f451-f49e-423e-9944-0a35f4f06066" class="bulleted-list"><li style="list-style-type:disc"><strong>Computer Vision:</strong> Linear SVM can be applied to image classification problems where the input features are linearly separable.</li></ul></li></ol><ol type="1" id="2fde2ac4-b597-4d20-af9e-db3642de75c4" class="numbered-list" start="5"><li><strong>Linear Discriminant Analysis (LDA):</strong><ul id="88317795-0b1b-4ca1-a0ba-25289d36a4aa" class="bulleted-list"><li style="list-style-type:disc"><strong>Machine Learning:</strong> LDA is a linear classifier used for both binary and multiclass classification. It models the distribution of classes and computes linear combinations of features to make predictions.</li></ul><ul id="3fa38cc6-8f6a-46ec-8235-cbf526a2661f" class="bulleted-list"><li style="list-style-type:disc"><strong>Computer Vision:</strong> LDA can be applied to tasks such as face recognition and object recognition in images.</li></ul></li></ol><p id="1b0f3100-ce1c-4c23-915a-f895d3581666" class="">While linear classifiers are effective for certain tasks, they may struggle with complex, nonlinear relationships in data. In such cases, more advanced models like non-linear classifiers or deep neural networks might be more suitable for machine learning and computer vision applications.</p><p id="707dcc7a-4ae6-4df8-bd47-f3dce68cc2cd" class=""><mark class="highlight-red"><strong>Next Step</strong></mark><mark class="highlight-blue"> </mark>: —<strong><mark class="highlight-teal">Machine Learning in Computer Vision</mark></strong></p><p id="4e5b51d8-60e9-4ca1-b928-74008be56d92" class=""><strong><mark class="highlight-teal">—Deep Learning in Computer Vision </mark></strong></p><h2 id="86178508-71b4-49e4-82ff-6e4c0c6e10b7" class=""><mark class="highlight-teal"><strong>Object Detection:</strong></mark></h2><figure id="fabcd76e-c841-4991-87c9-8e19f3366e27" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2051.png"><img style="width:1125px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2051.png"/></a></figure><p id="95c85313-2032-486b-8745-edae7b44467d" class="">—In object detection problems, we generally have to find all the possible objects in the image</p><ul id="8d97499d-c4f1-41a7-93de-eeb0c74a1447" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong>Sliding window detection Algorithm :</strong></mark></li></ul><p id="09f1ed45-a820-416b-9aa8-fe2b8f78ac3f" class="">—If we want to detect a dog we consider a <strong>fixed window size</strong>, if chosen properly, the dog will occupy most of the window, this is essentially a sub image that we would like to classify as a dog the other sub images would be classified as background each image that does not contain the dog would be considered a <strong>background class</strong></p><figure id="f5b06e1d-2da6-41d8-9eb8-7d646579e3ba" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2052.png"><img style="width:528px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2052.png"/></a></figure><p id="03c68aaa-43d7-43d3-addc-2f54e08b435d" class="">—The sliding window algorithm is a more systematic approach We start in one region in the image, classify that Sub-image We then shift the window and classify the next sub-image We repeat the process When we get to the horizontal border We move a few pixels down in the Vertical direction and repeat the process When the object occupies most of the window, it will be <strong>classified as a dog</strong></p><figure id="734f33c2-2ac8-4f33-80d9-ea833956c270" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2053.png"><img style="width:432px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2053.png"/></a></figure><figure id="5abf760a-5678-477e-9135-1c4b1ada4cbb" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2054.png"><img style="width:432px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2054.png"/></a></figure><ul id="7da375ea-d6a2-42ba-94eb-0ef66914f4cc" class="bulleted-list"><li style="list-style-type:disc"><strong>Problems of Sliding Window:</strong></li></ul><div id="d924d86d-4ac1-4520-8dc7-0f796c6e4f1c" class="column-list"><div id="a3f3f1c5-e554-4ce4-8787-d2bbf41ea814" style="width:50.00000000000004%" class="column"><figure id="44c76639-16f6-4f48-9d8b-5ed3295705d1" class="image" style="text-align:left"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2055.png"><img style="width:288px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2055.png"/></a></figure><p id="9bc6467d-a52a-4cc9-8e4d-228dc94c7639" class="">
+</p><p id="0e803b1d-f951-4258-b391-571caca8b460" class="">
+</p><figure id="ad5fb1d7-2018-4c25-8d23-dcd038ca27be" class="image" style="text-align:center"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2056.png"><img style="width:240px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2056.png"/></a></figure></div><div id="2ea0f77a-4daa-4ae7-b1e3-fe6b3ca638e5" style="width:50%" class="column"><figure id="0d348b93-a865-4243-935a-fe9f715b2bfb" class="image" style="text-align:right"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2057.png"><img style="width:240px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2057.png"/></a></figure></div></div><figure id="4574629c-91c0-4f90-b40f-4ee18102a8a6" class="image" style="text-align:left"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2058.png"><img style="width:240px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2058.png"/></a></figure><p id="af0ee772-9844-41db-8356-419043827d09" class="">
+</p><ul id="67ef0b80-1bc7-4b13-bab8-540f6349dc24" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong>Bounding Box algorithm:</strong></mark></li></ul><p id="42d8418d-a621-4fbf-8e31-3e9ffc19af6f" class="">—The goal of object detection is to predict these points, so we add a “hat” to indicate it’s a prediction</p><figure id="48a9dcdf-eb77-4c3c-a91d-fc3d5316e4bb" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2059.png"><img style="width:317px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2059.png"/></a></figure><ul id="1695276c-93ff-4790-91fd-fe51d811f35c" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong>The Bounding Box Pipeline:</strong></mark></li></ul><p id="c9242ab0-eac3-4539-927d-f8b927a7deaa" class="">—It’s  Like classification, we have the class y and x. We also have the bounding box, just like classification we have a dataset of Classes and their Bounding boxes Similar to classification, we use the dataset to train the model, we include the box coordinates, the result is an object detector with updated learning parameters</p><figure id="c4eecd80-71fe-4557-8e2b-9438d611ed51" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2060.png"><img style="width:528px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2060.png"/></a></figure><div id="b396585b-f308-4155-8f68-773257dd7734" class="column-list"><div id="db590d91-9e92-4b32-a624-490fb58a2317" style="width:50%" class="column"><figure id="d5586350-0066-47ef-bdd6-975001ac7c52" class="image" style="text-align:left"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2061.png"><img style="width:288px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2061.png"/></a></figure></div><div id="795048c1-a448-47e1-8ae2-22e3d371d6f0" style="width:50%" class="column"><p id="ab5429e3-1231-4b71-aa63-cdec483a2d24" class="">
+</p><p id="d66ca1a4-04d1-4ac4-b5f0-a2b384b52df6" class="">
+</p><figure id="a3b1f808-450b-4e46-a35b-ed42806d703d" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2062.png"><img style="width:144px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2062.png"/></a></figure></div></div><ul id="8223657f-8974-4aec-a569-91a1e50d9bb4" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong>Haar Classifier:</strong></mark></li></ul><p id="c01ac5d4-1972-4025-ba87-d9906679ee7a" class="">-It’s a machine learning method </p><p id="b3a82c44-0033-4bea-b67d-05e0cccc393d" class="">-Trained on positive and negative images </p><p id="f681fe92-c510-41b3-ba8a-6365b6083939" class="">-After millions of training images are fed to the system, the classifier begins by extracting features from each image. Haar wavelets are convolution kernels used to extract features</p><figure id="e6423cf4-cf21-4aba-952d-ad178b500c6a" class="link-to-page"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Roadmap%20In%20Computer%20Vision%20e6423cf4cf214aba952dad178b500c6a.html"> Roadmap In Computer Vision:</a></figure><p id="8fe7daa5-f9ae-41bb-97da-da0046bffd1c" class="">
+</p><h3 id="0c0c1709-f37b-49dd-8322-fd0a9afd7a11" class=""><mark class="highlight-teal">Motion Detection and Tracking Using Opencv Contours:</mark></h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f20dcf88-a96d-45b0-82c3-b6aa38c4c651" class="code"><code class="language-JavaScript">(x,y,z,t)=cv2.boundingRect(contour)</code></pre><p id="983a07e3-68fc-4a95-ace7-d263a05b6b75" class="">=⇒ Find the bounding rectangle around a given contour. It calculates the coordinates of the top-left corner (x, y) and the dimensions (width, height) of the rectangle that encloses the contour.</p><p id="fc22c697-7c9c-4cd5-a07f-6d6bbf9bdc10" class="">-This function is commonly used in object detection and tracking applications. Once you have the bounding rectangle, you can use it to draw a rectangle around the detected object or to extract a region of interest (ROI) from the image.</p><ul id="b526cc1d-3fac-4b5f-8afe-9f3997997f68" class="bulleted-list"><li style="list-style-type:disc">Contours are regions of interest in an image, and their area indicates how much space they cover.</li></ul><ul id="6575b1cc-f07f-4bd0-868b-f30ce07ae476" class="bulleted-list"><li style="list-style-type:disc">The condition <code><strong>cv2.contourArea(contour) &lt; 700</strong></code> is a filter to exclude small contours. If the area of a contour is less than 700 pixels, it is considered small.</li></ul><ul id="f8ec1851-9923-4231-b3f4-45bb7e5c816e" class="bulleted-list"><li style="list-style-type:disc"><strong>Small contours</strong> are often ignored or skipped because they might represent <strong>noise</strong>, small artifacts, or objects that are not of interest.</li></ul><ul id="78103df7-7fc1-4fc8-b22a-23d5a7e2c6d8" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">The purpose is usually to focus on larger and more significant contours that correspond to meaningful objects or features in the image.</span></li></ul><h3 id="3ef593cc-69da-4456-bf9c-ea0e8ec3fd00" class=""><mark class="highlight-teal">Detect Simple Geometric Shapes using OpenCV in Python</mark></h3><p id="b2ca44e5-a5b8-4c1e-8a42-7064956dc585" class=""><code>_, thresh = cv2.threshold(gray, 100, 255, cv2.THRESH_BINARY)</code></p><ul id="e0bc9b31-7bbb-4cf8-8a96-9c1b79110a4c" class="bulleted-list"><li style="list-style-type:disc">If a pixel in the <code><strong>gray</strong></code> image has a <strong>value less than 100, it will be set to </strong><mark class="highlight-yellow"><strong>0 (black).</strong></mark></li></ul><ul id="1c280d51-be52-4e60-b569-d8c0590c8e21" class="bulleted-list"><li style="list-style-type:disc">If a pixel in the <code><strong>gray</strong></code> image has a <strong>value greater than or equal to 100, it will be set to </strong><mark class="highlight-brown"><strong>255 (white).</strong></mark></li></ul><p id="6714020a-737f-4aed-9683-74ed1dbf57b0" class="">So, the resulting <code><strong>thresh</strong></code> image will be a <strong>binary image</strong> where pixels are either 0 or 255</p><p id="f0f9efef-d6ad-4d96-83ef-f1ed6628c4cd" class="">— The variable <code><strong>contours</strong></code> will contain a list of contours, where each contour is represented as an array of points. </p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="beb0ee2c-fe8e-4d47-a854-f84dc71011dd" class="code"><code class="language-JavaScript">contours, hierarchy = cv2.findContours(image, mode, method, contours=None, offset=None)</code></pre><ul id="91a873a7-a089-4d2d-b554-144c15ff4e3b" class="bulleted-list"><li style="list-style-type:disc"><code><strong>image</strong></code><strong>:</strong> This is the input binary image (black and white). In your case, it&#x27;s the thresholded image (<code><strong>thrash</strong></code> in your code). </li></ul><ul id="3b67e25a-3129-4631-93fd-6303e0b0208e" class="bulleted-list"><li style="list-style-type:disc"><code><strong>mode</strong></code><strong>:</strong> It specifies the retrieval mode of the contours. There are several modes, but the commonly used ones are:<ul id="51befea7-43dc-4600-b0d2-50352bfb765b" class="bulleted-list"><li style="list-style-type:circle"><code><strong>cv2.RETR_EXTERNAL</strong></code>: Retrieves only the extreme outer contours.</li></ul><ul id="c1d0768f-2c5f-4352-82b0-e32a4f7f3e32" class="bulleted-list"><li style="list-style-type:circle"><code><strong>cv2.RETR_LIST</strong></code>: Retrieves all contours without any hierarchical information.</li></ul><ul id="0f5e27e0-0d9d-4715-8b8d-e6acccc26b5e" class="bulleted-list"><li style="list-style-type:circle"><code><strong>cv2.RETR_TREE</strong></code>: Retrieves all contours and reconstructs a full hierarchy of nested contours.</li></ul></li></ul><ul id="f3d61476-c44c-4b83-a68f-e3550e9aacb9" class="bulleted-list"><li style="list-style-type:disc"><code><strong>method</strong></code><strong>:</strong> It specifies the contour approximation method. Common options include:<ul id="b6663d38-cba4-4dc7-9369-1bd2765901ac" class="bulleted-list"><li style="list-style-type:circle"><code><strong>cv2.CHAIN_APPROX_SIMPLE</strong></code>: Removes all redundant points and compresses the contour, saving memory.</li></ul><ul id="7dd150b1-5706-46f4-bfdf-42c9369628e6" class="bulleted-list"><li style="list-style-type:circle"><code><strong>cv2.CHAIN_APPROX_NONE</strong></code>: Stores all the contour points. It may consume more memory.</li></ul></li></ul><ul id="14a54d84-d349-4345-af0a-f48232dfa702" class="bulleted-list"><li style="list-style-type:disc"><code><strong>contours</strong></code><strong>:</strong> (Optional) Output parameter that receives the contours. This is a list of contours, where each contour is represented as an array of points.</li></ul><ul id="6f39cf5b-07c3-4993-9f74-a1585fa675ea" class="bulleted-list"><li style="list-style-type:disc"><code><strong>hierarchy</strong></code><strong>:</strong> (Optional) Output parameter that receives information about the hierarchical structure of the contours. It is useful when using hierarchical retrieval modes like <code><strong>cv2.RETR_TREE </strong></code></li></ul><p id="7cd05ec2-4391-4eb0-9ff2-55d847ff762d" class="">⇒<strong>The variable </strong><code><strong>contours</strong></code><strong> will contain a list of contours, where each contour is represented as an array of points</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3c878dd6-bf73-4ea1-93ec-8ffbd14f78e0" class="code"><code class="language-JavaScript">approx = cv2.approxPolyDP(contour, 0.02 * cv2.arcLength(contour, True), True)</code></pre><p id="bf9ecab7-98f8-4389-996a-aaf570959e72" class="">-The <code><strong>cv2.approxPolyDP</strong></code> function returns <strong>a list of vertices</strong> that represents<strong> the approximated polygonal curve</strong>. Each vertex is a <strong>point (x, y)</strong> in the image.</p><p id="5a248aa7-e055-4e9d-9b3b-6ead0b39e21a" class="">-The structure of <code><strong>approx</strong></code> is a <strong>list where each element is a NumPy array</strong> containing the (x, y) coordinates of a vertex in the approximated polygon. So, if <code><strong>approx</strong></code> has <code><strong>n</strong></code> vertices, it will be a list of <code><strong>n</strong></code> arrays.</p><p id="209aa58e-6c8b-4130-9261-79d054b3050a" class="">-<code><strong>len(approx)</strong></code> gives you the <strong>number of vertices </strong>in that particular approximated polygon</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2a9fecab-b021-4c60-a917-5c88a369c6c4" class="code"><code class="language-JavaScript">    x=approx.ravel()[0]
+    y=approx.ravel()[1]</code></pre><p id="7ba2a35a-eff1-4cf7-a680-9424ea5cfb2a" class="">-<code><strong>ravel()</strong></code>, <strong>it flattens the array, meaning it transforms a multi-dimensional array into a one-dimensional array</strong>. In the case of <code><strong>approx</strong></code>, each vertex is represented by a pair of coordinates (x, y) in the flattened array.</p><p id="fdc9d555-6b2d-4e4a-a0dc-87bfe953acb0" class="">
+</p><p id="2eada7a6-e08e-4abd-8f23-ca93b783085c" class=""> -We Find contours only  in the binary image</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="0d8dfd0d-1c8b-4eb1-85fb-73f19f5b293d" class="code"><code class="language-JavaScript">contours, _ = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)</code></pre><ol type="1" id="eb7e6652-e251-44ce-9c75-9d670d29315f" class="numbered-list" start="1"><li><strong>Approximate Contours:</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="79972f54-82c5-4ef2-93ac-bba4b2d84bf1" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all"># Loop through each contour and approximate the polygon
+for contour in contours:
+    epsilon = 0.02 * cv2.arcLength(contour, True)
+    approx = cv2.approxPolyDP(contour, epsilon, True</code></pre></li></ol><ol type="1" id="0c3c4706-5a32-4e4c-8df3-cfd260e162a3" class="numbered-list" start="2"><li><strong>Shape Identification:</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f398ba87-1c83-43c7-bcc8-4e9590854791" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all"># Based on the number of vertices in the approximated polygon, classify the shape
+if len(approx) == 3:
+    # Triangle
+elif len(approx) == 4:
+    # Rectangle or Square based on aspect ratio
+elif len(approx) == 5:
+    # Pentagon
+# Add more conditions for other shapes as needed
+</code></pre><figure id="82092612-8892-438e-9509-db14f18afa33" class="image" style="text-align:center"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2063.png"><img style="width:432px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2063.png"/></a></figure><h3 id="14d6f56f-9893-48ea-b17e-f097b8dbd96d" class=""><mark class="highlight-teal">Understanding image Histograms using OpenCV Python</mark></h3><ul id="d0c19eb8-04c2-4af9-9519-9750f3941337" class="bulleted-list"><li style="list-style-type:disc">Creating a 2D array of zeros:</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c1ad4cac-7d68-40f2-90ad-058e74eb8bc8" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">zeros_2d = np.zeros((3, 4), dtype=int)
+print(zeros_2d)</code></pre><p id="1788475f-5112-4bff-890a-64cb4dcade08" class="">Output:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="0a2a0db9-f93e-4a2b-b051-9b676fe2d1a2" class="code"><code class="language-Lua" style="white-space:pre-wrap;word-break:break-all">[[0 0 0 0]
+ [0 0 0 0]
+ [0 0 0 0]]</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="9924c480-dd2e-43db-a60f-894d2915c726" class="code"><code class="language-JavaScript">plt.hist(img_flattened, bins=256, range=[0, 256], color=&#x27;black&#x27;, alpha=0.7)</code></pre><p id="7b0600c5-6ffd-4ea6-b2b6-abe42ff56d05" class="">x-axis: pixel’s intensity</p><p id="bc3b6830-1845-4f41-a369-448acc1e939e" class="">y-axis:frequency:number of pixels </p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="31ff149c-46e9-4d95-91d2-099da7e14523" class="code"><code class="language-JavaScript">img=np.zeros((200,200),np.uint8)
+cv2.rectangle(img,(0,0),(200,100),255,-1)
+plt.hist(img.ravel(),255,[0,256])</code></pre><figure id="caab5bb8-6679-4b66-aee7-8924e1bb5467" class="image" style="text-align:right"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2064.png"><img style="width:200px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2064.png"/></a></figure><figure id="e02f7166-079d-4f0b-8174-cdcd9a14b3ef" class="image" style="text-align:left"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2065.png"><img style="width:336px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2065.png"/></a></figure><p id="2e1f92af-c6b6-4e4d-aeaf-7d89a09fc824" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="bd9ef931-a930-42ad-91f2-be7c23e2d6f2" class="code"><code class="language-JavaScript">b, g, r = cv2.split(image)</code></pre><p id="9c700d68-3d05-4ab9-ac03-780e86293098" class="">-This  function returns three separate matrices <code><strong>b</strong></code>, <code><strong>g</strong></code>, and <code><strong>r</strong></code>, representing<strong> the blue, green, and red channels</strong>, respectively. Each of these matrices will be a <strong>2D array</strong> with the same size as the input image but containing the intensity values for only one color channel.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="77170819-0220-4a8a-ac48-4ef108d2e07f" class="code"><code class="language-JavaScript">b, g, r = cv2.split(img)
+
+# Plot histograms for each channel
+plt.hist(g.ravel(), bins=256, range=[0, 256], color=&#x27;green&#x27;)
+plt.hist(b.ravel(), bins=256, range=[0, 256], color=&#x27;blue&#x27;, alpha=0.7)
+plt.hist(r.ravel(), bins=256, range=[0, 256], color=&#x27;red&#x27;, alpha=0.7)</code></pre><figure id="889d4f29-ebd2-408f-8b19-6ebf6a84768d" class="image" style="text-align:center"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2066.png"><img style="width:336px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2066.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="9d9ebcf3-f05e-4596-b54b-312547e42997" class="code"><code class="language-JavaScript">hist=cv2.calcHist([img],[0],None,[256],[0,256])
+
+x_axis:pixel&#x27;s intensity :[0,255]
+y_axis:frequency or number ofpixels corresponding to each pixel&#x27;s intensity 
+ plt.hist(gray.ravel(),bins=256,range=[0,256])
+=&gt;Create a histogram: x _axis: pixel&#x27;s intensity :[0,255] 
+                      y_axis:frequency
+==&gt;</code></pre><figure id="f5d41fcb-a4d8-4087-97eb-1309adb62324" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2067.png"><img style="width:336px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2067.png"/></a></figure><figure id="252fffb8-0aa6-4d82-829f-58439a60057c" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2068.png"><img style="width:336px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2068.png"/></a></figure><p id="b2be7064-8426-4995-9e64-737330d792d7" class=""><mark class="highlight-brown"><code><strong>cv2.calcHist(images, channels, mask, histSize, ranges[, hist[, accumulate]])</strong></code></mark></p><p id="6b91b390-34d8-4460-91f2-9f86c1c3b031" class="">-<code><strong>cv2.calcHist()</strong></code> is to calculate the histogram of an image or a set of images. The histogram is a representation of the distribution of pixel intensities in the image</p><p id="30b178cf-defe-476f-8d67-d406f60a6ceb" class="">-<code><strong>channels</strong></code>: This is the channel or channels for which you want to calculate the histogram. For grayscale images, it is [0]. For color images, you can pass [0], [1], [2] to calculate the histogram of blue, green, or red channel respectively.</p><p id="ec0b3fdd-14e2-4381-93ad-292a83203467" class="">-<code><strong>histSize</strong></code>: This represents the number of bins in the histogram. For full scale, use [256].</p><p id="a0f840bc-df70-4f81-8f41-8995b827a027" class=""><code><strong>ranges</strong></code>: This is the range of intensity values. For grayscale images, it is usually [0, 256].</p><p id="a1386b09-ad8f-4036-b2ba-acd16a39e1c1" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="deb14d95-79fd-43ed-930b-72bd0b0df561" class="code"><code class="language-JavaScript">plt.hist(x, bins=None, range=None)</code></pre><ul id="39892d43-544f-480b-8d27-234cfb610459" class="bulleted-list"><li style="list-style-type:disc"><code> </code><code><strong>x</strong></code>: The input data. This is the data for which the histogram will be calculated.</li></ul><ul id="8f41716a-a81e-4c91-9c2c-a751a3b45194" class="bulleted-list"><li style="list-style-type:disc"><code><strong>bins</strong></code>: The number of bins (intervals) to use in the histogram. It can be an integer specifying the number of bins, or a sequence specifying the bin edges.</li></ul><ul id="5c7386b3-b8b1-44c7-af79-3d1036dcc70d" class="bulleted-list"><li style="list-style-type:disc"><code><strong>range</strong></code>: The lower and upper range of the bins. Values outside this range are ignor</li></ul><h3 id="018c02b6-309c-428a-9632-053c1f5395a9" class=""><mark class="highlight-red">Template matching using OpenCV in Python</mark></h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b5e23614-39eb-4220-a529-5b079e22cd4b" class="code"><code class="language-JavaScript">cv2.matchTemplate(image, templ, method[, result[, mask]])
+
+</code></pre><p id="0fd4b19a-9dc4-4f9d-b5d8-3c4e9ab69bbb" class="">
+</p><ul id="7b8d58a1-01f3-4e1a-8030-fd685ce87d3d" class="bulleted-list"><li style="list-style-type:disc"><code><strong>image</strong></code>: The input image where the search will be conducted.</li></ul><ul id="f8be3aba-9959-4023-bb5c-f03a97bc851b" class="bulleted-list"><li style="list-style-type:disc"><code><strong>templ</strong></code>: The template image that you want to find in the input image. It must be smaller than the input image.</li></ul><ul id="1f91e191-aadf-4ac2-805b-1dbe2cfcd48d" class="bulleted-list"><li style="list-style-type:disc"><code><strong>method</strong></code>: The matching method. It specifies the way the template is compared with the image. Common methods include <code><strong>cv2.TM_SQDIFF</strong></code>, <code><strong>cv2.TM_SQDIFF_NORMED</strong></code>, <code><strong>cv2.TM_CCORR</strong></code>, <code><strong>cv2.TM_CCORR_NORMED</strong></code>, <code><strong>cv2.TM_CCOEFF</strong></code>, and <code><strong>cv2.TM_CCOEFF_NORMED</strong></code>.</li></ul><ul id="a85bebb2-b14a-4d5b-9290-a895086e56f9" class="bulleted-list"><li style="list-style-type:disc"><code><strong>result</strong></code><strong> (optional)</strong>: The output map of comparison results. It is a single-channel, <mark class="highlight-blue"><strong>floating-point array.</strong></mark></li></ul><ul id="fee3a918-b8c2-49bc-b5fd-324d91c4cf8f" class="bulleted-list"><li style="list-style-type:disc">The result of the <code><strong>cv2.matchTemplate()</strong></code> function is a grayscale image where each pixel corresponds to the result of the template matching at that location.</li></ul><ul id="a55f29c8-72a2-4549-95a9-c9280c9f6064" class="bulleted-list"><li style="list-style-type:disc">The elements of the floating-point array obtained from <code><strong>cv2.matchTemplate()</strong></code> represent the match scores at each position in the result matrix. <span style="border-bottom:0.05em solid">These match scores indicate how well the template matches the corresponding sub-region in the input image.</span></li></ul><ul id="4de193fd-1d94-41e6-bcb8-1d058264557f" class="bulleted-list"><li style="list-style-type:disc"><strong>Higher Score:</strong> A higher match score at a particular position indicates a stronger correlation between the template and the image at that location.</li></ul><ul id="a8fd2f8b-333d-4e8a-a9ce-adc110a1b9f1" class="bulleted-list"><li style="list-style-type:disc"><strong>Lower Score:</strong> Conversely, a lower match score means a weaker correlation.</li></ul><p id="6ca06b33-f0e5-4045-b8c6-f23af255d9e1" class="">The interpretation of the match scores depends on the matching method used, which is specified by the <code><strong>method</strong></code> parameter in <code><strong>cv2.matchTemplate()</strong></code>. Common methods include:</p><ul id="312b0b68-417f-4f0f-880b-d9914dec664e" class="bulleted-list"><li style="list-style-type:disc"><code><strong>cv2.TM_SQDIFF</strong></code>: The closer the match, the smaller the score.</li></ul><ul id="43857f4a-679b-4062-8a54-c5d98707964c" class="bulleted-list"><li style="list-style-type:disc"><code><strong>cv2.TM_CCORR</strong></code>: The closer the match, the larger the score.</li></ul><ul id="56bb3ab4-256c-4e79-ae06-6a7e4d1b53e9" class="bulleted-list"><li style="list-style-type:disc"><code><strong>cv2.TM_CCOEFF</strong></code>: The score can be positive or negative, with a larger positive value indicating a better match.</li></ul><h3 id="cfd169b8-8a0a-44e0-bc33-8c185c9b8c34" class=""><mark class="highlight-orange"><span style="border-bottom:0.05em solid">Open CV Projects :(Important  to check)</span></mark></h3><p id="4a6b0de2-2d2c-4330-a34f-589825e8d9b2" class=""><a href="https://www.geeksforgeeks.org/template-matching-using-opencv-in-python/">https://www.geeksforgeeks.org/template-matching-using-opencv-in-python/</a></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="0352b837-bfcf-4ef7-99ff-b5bf04235a0e" class="code"><code class="language-JavaScript">ar=np.array([1,2,3,4,5])
+res=np.where(ar&gt;2)
+Output:
+(array([2, 3, 4], dtype=int64),) as ar[2]=3&gt;2 and ar[3]=4&gt;2
+=&gt;The np.where() function in NumPy is used to return the indices of elements in an array that satisfy a specified condition</code></pre><h3 id="fff7bd10-8a8e-45ba-9336-f84942b8800f" class=""><mark class="highlight-red">Haar Classifier:</mark></h3><ul id="0a539062-e8eb-4353-8ee8-b3b55d3aab31" class="bulleted-list"><li style="list-style-type:disc">they are trained using lots of positive and negative images </li></ul><ol type="1" id="a669edf8-d7eb-4e19-b7a5-df35e89ea6bd" class="numbered-list" start="1"><li><strong>Positive Images:</strong><ul id="3b111dc5-4423-48b7-9ae5-99152807d649" class="bulleted-list"><li style="list-style-type:disc"><strong>Contain the Object of Interest:</strong> Positive images are examples that contain the object or class you want to detect.</li></ul><ul id="bff55968-8e54-4a10-a5eb-5ca9e05bcf8e" class="bulleted-list"><li style="list-style-type:disc"><strong>Labeled Examples:</strong> Each positive image is labeled to indicate the presence of the object of interest.</li></ul><ul id="7043403d-9620-459c-9c80-59336c1268e7" class="bulleted-list"><li style="list-style-type:disc"><strong>Varied Poses and Conditions:</strong> Positive images should cover a range of poses, orientations, lighting conditions, and backgrounds relevant to the application.</li></ul></li></ol><ol type="1" id="7cc188be-0b5f-4d76-8eb8-09265e02d88c" class="numbered-list" start="2"><li><strong>Negative Images:</strong><ul id="ad9fb157-137e-44ba-823a-00135d89b524" class="bulleted-list"><li style="list-style-type:disc"><strong>Do Not Contain the Object of Interest:</strong> Negative images are examples that do not contain the object or class you want to detect.</li></ul><ul id="0a4791e6-e9e6-4817-8f69-1afeb924fcac" class="bulleted-list"><li style="list-style-type:disc"><strong>Labeled as Absence:</strong> Negative images are labeled to indicate the absence of the target object.</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e04f3fb2-087f-4cda-a8fb-004431806c04" class="code"><code class="language-JavaScript">face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + &#x27;haarcascade_frontalface_default.xml&#x27;)
+faces = face_cascade.detectMultiScale(gray, scaleFactor=1.3, minNeighbors=5)
+for (x, y, w, h) in faces:
+        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 3)</code></pre><ul id="801ef405-3a93-4f52-b688-8f15cb2c91d0" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-blue"><strong>Face Detection :</strong></mark></li></ul><p id="154d7668-d69f-44a2-8279-129ee0d0e265" class="">-Initializes a <code><strong>CascadeClassifier</strong></code> object in OpenCV using a pre-trained Haar Cascade classifier for frontal face detection.</p><p id="b6d314f2-78e9-4a47-a265-d18e00633318" class="">-The <code><strong>detectMultiScale</strong></code> method returns a list of rectangles (represented as (x, y, width, height)) where faces are detected in the image. <span style="border-bottom:0.05em solid">Each rectangle corresponds to a detected face</span>, and the list (<code><strong>faces</strong></code>) contains all the detected faces in the image.</p><p id="7ef52c17-9bb8-4863-83dc-7013bd836238" class="">
+</p><ul id="2ae8056f-b8fb-4fa3-8322-66174a03963c" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-blue"><strong>Harris Corner Detector:</strong></mark></li></ul><p id="177d4630-e1cd-44f4-a651-8182671e3d10" class="">-Corner :Point where two edges meet ,rapid changes  of image intensity in two directions within a small region </p><figure id="0c890821-66c0-4171-abfd-f5f7d893e7a5" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2069.png"><img style="width:1003px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2069.png"/></a></figure><figure id="733299a3-696a-4d97-8b1a-c6debacb0f48" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2070.png"><img style="width:528px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2070.png"/></a></figure><figure id="649b14e5-87e6-42de-b930-caf443f5ccbd" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2071.png"><img style="width:624px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2071.png"/></a></figure><figure id="25b38064-6e91-41fe-bbdd-af3a7710b8e5" class="image"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2072.png"><img style="width:624px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2072.png"/></a></figure><p id="eefbbe1b-ff69-409d-a725-3cd863f4545f" class="">
+</p><ul id="67f2b5b6-cefa-4ec3-ad40-610f6253fd82" class="bulleted-list"><li style="list-style-type:disc">Background segmentation is a common task in computer vision that involves separating foreground objects from the background in a video sequence</li></ul><h3 id="10c2d7f4-c891-4af8-9c6c-ac8bb8497876" class=""><mark class="highlight-red">Background segmentation</mark></h3><p id="15be0938-ba68-45ef-ad3e-cc41e45cf0f9" class="">—It involves separating foreground objects from the background in a video sequence.</p><ul id="ac506bd4-b34e-447d-aaf8-267185b7a553" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-orange"><strong>BackgroundSubtractorMOG:</strong></mark></li></ul><p id="b8bdaf43-c868-4b00-a5e5-dbe39ca24854" class="">This algorithm is based on a mixture of Gaussians (MOG) model. It models each pixel as a mixture of several Gaussian distributions to represent both the background and foreground. </p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="cbe41177-356b-46e1-a1ca-d5fa6c3e2099" class="code"><code class="language-JavaScript">bg_subtractor = cv2.bgsegm.createBackgroundSubtractorMOG()</code></pre><figure id="dec185cc-ffc1-47f8-9d07-4548d466261a" class="image" style="text-align:center"><a href="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2073.png"><img style="width:576px" src="OPEN%20CV%20Libray%20e5a7893047ac4f09af1b075de24e74f6/Untitled%2073.png"/></a></figure></li></ol></li></ol></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
